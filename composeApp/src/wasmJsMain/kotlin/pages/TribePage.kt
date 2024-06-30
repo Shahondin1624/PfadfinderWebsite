@@ -37,10 +37,14 @@ fun TribePage() {
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Row {
-                    DescribedText(
+                    DescribedTextWithLink(
                         modifier = Modifier.weight(weight = 0.5f).padding(horizontal = 10.dp).padding(vertical = 20.dp),
                         header = stringResource(Res.string.info),
-                        content = stringResource(Res.string.infoContent)
+                        content = createLinkTarget(
+                            stringResource(Res.string.infoContent),
+                            annotate = "Europapfadfindern St.Michael",
+                            linkTarget = "https://www.michaelspfadfinder.de/"
+                        )
                     )
                     DescribedText(
                         modifier = Modifier.weight(weight = 0.5f).padding(horizontal = 10.dp).padding(vertical = 20.dp),

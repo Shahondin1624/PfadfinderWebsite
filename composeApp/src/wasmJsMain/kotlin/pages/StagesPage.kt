@@ -76,7 +76,11 @@ fun StagesPage() {
                         )
                     }
                 }
-                Stage(stage = "Rover", emailAddress = "", description = stringResource(Res.string.roverDescription)) {
+                Stage(
+                    stage = "Rover",
+                    emailAddress = stringResource(Res.string.emailRover),
+                    description = stringResource(Res.string.roverDescription)
+                ) {
                     Image(
                         painter = painterResource(Res.drawable.placeholder), contentDescription = null,
                         modifier = Modifier.padding(vertical = 10.dp).padding(horizontal = 50.dp)

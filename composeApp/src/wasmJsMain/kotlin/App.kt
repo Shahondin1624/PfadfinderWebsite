@@ -1,9 +1,10 @@
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import theme.AppTheme
 
 @Composable
 fun App() {
-    AppTheme {
-        Index()
+    val isInDarkMode = remember { mutableStateOf(true) }
+    AppTheme(isInDarkMode.value) {
+        Index(isInDarkMode)
     }
 }

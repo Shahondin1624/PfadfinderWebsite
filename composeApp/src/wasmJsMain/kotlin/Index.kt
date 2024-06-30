@@ -2,7 +2,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
@@ -18,7 +18,7 @@ import website.composeapp.generated.resources.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Index() {
+fun Index(isInDarkMode: MutableState<Boolean>) {
     val navController = rememberNavController()
     Scaffold(topBar = {
         TopAppBar(title = {
@@ -61,6 +61,16 @@ fun Index() {
                     modifier = Modifier.padding(horizontal = 10.dp)
                 ) {
                     Text(text = stringResource(Res.string.impressum))
+                }
+                var themeModeText by remember { mutableStateOf("White Mode") }
+                Button(
+                    onClick = {
+                        isInDarkMode.value = !isInDarkMode.value
+                        themeModeText = if (!isInDarkMode.value) "Dark Mode" else "White Mode"
+                    },
+                    modifier = Modifier.padding(horizontal = 10.dp)
+                ) {
+                    Text(text = themeModeText)
                 }
             }
         })

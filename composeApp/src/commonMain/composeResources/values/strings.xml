@@ -30,7 +30,8 @@
     <string name="cubScoutsDescription">TODO</string>
     <string name="scoutsDescription">TODO</string>
     <string name="roverDescription">TODO</string>
-    <string name="emailTribe">test@test.de</string>
-    <string name="emailCubScouts">test@test.de</string>
-    <string name="emailScouts">test@test.de</string>
+    <string name="emailTribe">Stamm@pfadfinder-wiesentheid.de</string>
+    <string name="emailCubScouts">Meute@pfadfinder-wiesentheid.de</string>
+    <string name="emailScouts">Trupp@pfadfinder-wiesentheid.de</string>
+    <string name="emailRover">Rover@pfadfinder-wiesentheid.de</string>
 </resources>
