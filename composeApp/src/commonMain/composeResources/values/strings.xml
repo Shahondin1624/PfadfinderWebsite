@@ -1,0 +1,36 @@
+<resources>
+    <string name="stamm">Stamm</string>
+    <string name="stufen">Stufen</string>
+    <string name="kalender">Kalender</string>
+    <string name="bilder">Bilder</string>
+    <string name="impressum">Impressum</string>
+    <string name="header">Pfadfinder Stamm Löwe von Schönborn</string>
+    <string name="villageName">Wiesentheid</string>
+    <string name="tribeDescriptionHeader">Unser Stamm</string>
+    <string name="info">Info</string>
+    <string name="infoContent">Die Pfadfinder vom Stamm Löwe von Schönborn sind mit ihren Kinder, Jugend und Erwachsenengruppen seit dem Jahr 1960 in Wiesentheid aktiv. Wir haben drei aktive Altersstufen, die gleichermaßen für Mädchen und Jungen offen sind. diese werden jeweils von mindestens einem/einer Gruppenleiter/In betreut. Unser Stamm steht in der Tradition des internationalen Pfadfindertums und gehört den Europapfadfindern St.Michael an. Auf dieser Seite findet ihr Informationen und Bilder über uns. Nehmt gerne Kontakt zu uns auf.</string>
+    <string name="europaPfadfinderStMichael">Europa Pfadfinder St.Michael</string>
+    <string name="europaPfadfinderStMichaelContent">Ein Pfadfinder lebt nicht für sich allein auf der Welt, sonder ist Teil unserer weltweiten Gemeinschaft, Das zeigt sich in internationalen Lagern und Aktionen, aber auch im Austausch mit Stämmen unseres Bundes Europapfadfinder St. Michael und Pfadfinder aus dem Ausland. Mehr über andere Kulturen zu erfahren und die eigenen Wurzeln anderen näher zu bringen, das ist es, was unsere Gemeinschaft so lebendig macht.</string>
+    <string name="prinzipien">Prinzipien</string>
+    <string name="prinzipienContent">Die Pfadfinder des Stammes Löwe von Schönborn stehen in der Tradition des internationalen Pfadfindertums und der Deutschen Jugendbewegung. Unsere Grundlagen bilden das Pfadfindergesetz und der Christliche Glauben. Ausgehend von diesen Grundlagen wenden wir uns gegen jede Form von Extremismus, Gewalt und Zerstörung der Lebensgrundlagen. Wir wollen selbstbestimmt, vor eigener Verantwortung, in innerer Wahrhaftigkeit diese Ziele in und außerhalb unserer Gruppe vertreten und uns für eine freie und brüderliche Gesellschaft einsetzen.</string>
+    <string name="insignien">Insignien</string>
+    <string name="insignienContent">Jedes Mitglied unseres Stammes trägt das goldgelbe-rostrote Halstuch. Nach dem abgelegtem Pfadfinderversprechen wird die Lilie, das Zeichen der weltweiten Pfadfinderbewegung, mit einem roten Malteserkreuz auf der linken Hemdtasche getragen. Natürlich haben wir auch eine Tracht, welche wir als Kluft bezeichnen. Diese besteht aus einem khakifarbenem Hemd mit den Abzeichen, einer dunklen Stoff- oder Lederhose (Bundhose), und einer Juja (Jungenschaftsjacke).</string>
+    <string name="dataProtectionDeclaration">Datenschutzerklärung</string>
+    <string name="dataProtection">Datenschutz</string>
+    <string name="dataProtectionContent">TODO: Datenschutz-Generator.de</string>
+    <string name="impressumContent">TODO</string>
+    <string name="legalDisclaimer">Haftungsausschluss</string>
+    <string name="liabilityForContent">Haftung für Inhalte</string>
+    <string name="liabilityForContentContent">TODO</string>
+    <string name="liabilityForLinks">Haftung für Links</string>
+    <string name="liabilityForLinksContent">TODO</string>
+    <string name="copyright">Urheberrecht</string>
+    <string name="copyrightContent">TODO</string>
+    <string name="calendarHeader">Unsere Termine</string>
+    <string name="cubScoutsDescription">TODO</string>
+    <string name="scoutsDescription">TODO</string>
+    <string name="roverDescription">TODO</string>
+    <string name="emailTribe">test@test.de</string>
+    <string name="emailCubScouts">test@test.de</string>
+    <string name="emailScouts">test@test.de</string>
+</resources>
