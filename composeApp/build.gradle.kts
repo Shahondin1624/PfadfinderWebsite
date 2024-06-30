@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
+version = "0.1.1"
+
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
@@ -39,6 +41,20 @@ kotlin {
             implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
             implementation(compose.materialIconsExtended)
         }
+    }
+
+    tasks.register<Exec>("dockerBuild") {
+        group = "docker"
+        description = "Builds the Docker image."
+        dependsOn("wasmJsBrowserDistribution")
+        commandLine("docker", "build", "-t", "pfadfinder-website:${project.version}", ".")
+    }
+
+    tasks.register<Exec>("dockerRun") {
+        group = "docker"
+        description = "Runs the Docker image."
+        dependsOn("dockerBuild")
+        commandLine("docker", "run", "-p", "80:80", "pfadfinder-website:${project.version}")
     }
 }
 
