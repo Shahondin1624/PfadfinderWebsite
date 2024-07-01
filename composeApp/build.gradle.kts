@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.1.1"
+version = "0.1.3"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
@@ -28,6 +28,15 @@ kotlin {
         }
         binaries.executable()
     }
+    js(IR) {
+        moduleName = "composeApp"
+        browser {
+            commonWebpackConfig {
+                outputFileName = "composeApp.js"
+            }
+        }
+        binaries.executable()
+    }
 
     sourceSets {
 
@@ -43,18 +52,39 @@ kotlin {
         }
     }
 
-    tasks.register<Exec>("dockerBuild") {
+    tasks.register<Exec>("dockerBuildWasm") {
         group = "docker"
-        description = "Builds the Docker image."
+        description = "Builds the Docker image for wasm."
         dependsOn("wasmJsBrowserDistribution")
-        commandLine("docker", "build", "-t", "pfadfinder-website:${project.version}", ".")
+        commandLine("docker", "build", "-f", "wasm.Dockerfile", "-t", "pfadfinder-website-wasm:${project.version}", ".")
     }
 
-    tasks.register<Exec>("dockerRun") {
+    tasks.register<Exec>("dockerBuildJs") {
+        group = "docker"
+        description = "Builds the Docker image for js."
+        dependsOn("jsBrowserDistribution")
+        commandLine("docker", "build", "-f", "js.Dockerfile", "-t", "pfadfinder-website-js:${project.version}", ".")
+    }
+
+    tasks.register<Exec>("dockerRunWasm") {
         group = "docker"
         description = "Runs the Docker image."
         dependsOn("dockerBuild")
-        commandLine("docker", "run", "-p", "80:80", "pfadfinder-website:${project.version}")
+        commandLine("docker", "run", "-p", "80:80", "pfadfinder-website-wasm:${project.version}")
+    }
+
+    tasks.register<Exec>("dockerRunJs") {
+        group = "docker"
+        description = "Runs the Docker image."
+        dependsOn("dockerBuild")
+        commandLine("docker", "run", "-p", "80:80", "pfadfinder-website-js:${project.version}")
+    }
+
+    tasks.register<Exec>("release") {
+        group = "release"
+        description = "Compiles each target and then builds docker images"
+        mustRunAfter("dockerBuildWasm")
+        mustRunAfter("dockerBuildJs")
     }
 }
 
