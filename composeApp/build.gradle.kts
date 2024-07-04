@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.1.4"
+version = "0.1.5"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
@@ -59,6 +59,10 @@ kotlin {
         }
     }
 
+    tasks.named("jsBrowserProductionWebpack") {
+        dependsOn("wasmJsProductionExecutableCompileSync")
+    }
+
     tasks.register<Exec>("dockerBuildWasm") {
         group = "docker"
         description = "Builds the Docker image for wasm."
@@ -76,14 +80,14 @@ kotlin {
     tasks.register<Exec>("dockerRunWasm") {
         group = "docker"
         description = "Runs the Docker image."
-        dependsOn("dockerBuild")
+        dependsOn("dockerBuildWasm")
         commandLine("docker", "run", "-p", "80:80", "pfadfinder-website-wasm:${project.version}")
     }
 
     tasks.register<Exec>("dockerRunJs") {
         group = "docker"
         description = "Runs the Docker image."
-        dependsOn("dockerBuild")
+        dependsOn("dockerBuildJs")
         commandLine("docker", "run", "-p", "80:80", "pfadfinder-website-js:${project.version}")
     }
 
