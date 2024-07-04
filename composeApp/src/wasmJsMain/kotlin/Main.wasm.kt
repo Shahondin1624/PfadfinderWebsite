@@ -4,7 +4,7 @@ import kotlinx.browser.window
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    CanvasBasedWindow("ComposeApp") {
+    CanvasBasedWindow("Pfadfinder Stamm Löwe von Schönborn") {
         App()
     }
 }

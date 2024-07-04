@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.1.5"
+version = "0.1.6"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
@@ -68,7 +68,6 @@ kotlin {
             println(version)
         }
     }
-
 
     tasks.register<Exec>("dockerBuildWasm") {
         group = "docker"
