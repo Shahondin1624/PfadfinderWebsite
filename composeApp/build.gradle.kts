@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.1.3"
+version = "0.1.4"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
@@ -39,16 +39,23 @@ kotlin {
     }
 
     sourceSets {
-
-        commonMain.dependencies {
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
-            implementation(compose.materialIconsExtended)
+        val commonMain by getting {
+            dependencies {
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material3)
+                implementation(compose.ui)
+                implementation(compose.components.resources)
+                implementation(compose.components.uiToolingPreview)
+                implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
+                implementation(compose.materialIconsExtended)
+            }
+        }
+        val jsMain by getting {
+            dependsOn(commonMain)
+        }
+        val wasmJsMain by getting {
+            dependsOn(commonMain)
         }
     }
 

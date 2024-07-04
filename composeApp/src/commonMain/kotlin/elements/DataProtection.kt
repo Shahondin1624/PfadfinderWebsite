@@ -9,6 +9,7 @@ import shared.H1
 import website.composeapp.generated.resources.Res
 import website.composeapp.generated.resources.legalDisclaimer
 
+
 @Composable
 fun DataProtection() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {

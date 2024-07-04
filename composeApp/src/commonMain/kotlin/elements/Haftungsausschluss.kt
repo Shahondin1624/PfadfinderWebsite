@@ -11,6 +11,10 @@ import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.stringResource
 import shared.DescribedText
 import website.composeapp.generated.resources.*
+import website.composeapp.generated.resources.Res
+import website.composeapp.generated.resources.liabilityForContent
+import website.composeapp.generated.resources.liabilityForContentContent
+import website.composeapp.generated.resources.liabilityForLinks
 
 @Composable
 fun Haftungsausschluss() {

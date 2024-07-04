@@ -22,6 +22,7 @@ import website.composeapp.generated.resources.Res
 import website.composeapp.generated.resources.calendarHeader
 import website.composeapp.generated.resources.under_construction
 
+
 @Composable
 fun CalendarPage() {
     val scrollState = rememberScrollState()

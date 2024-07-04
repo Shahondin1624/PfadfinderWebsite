@@ -14,6 +14,11 @@ import elements.LocationMap
 import org.jetbrains.compose.resources.stringResource
 import shared.*
 import website.composeapp.generated.resources.*
+import website.composeapp.generated.resources.Res
+import website.composeapp.generated.resources.header
+import website.composeapp.generated.resources.placeholder
+import website.composeapp.generated.resources.villageName
+
 
 @Composable
 fun TribePage() {

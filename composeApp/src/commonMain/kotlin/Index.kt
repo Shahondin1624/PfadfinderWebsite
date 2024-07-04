@@ -15,6 +15,10 @@ import org.jetbrains.compose.resources.stringResource
 import pages.*
 import shared.H1
 import website.composeapp.generated.resources.*
+import website.composeapp.generated.resources.Res
+import website.composeapp.generated.resources.logo
+import website.composeapp.generated.resources.stamm
+import website.composeapp.generated.resources.stufen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

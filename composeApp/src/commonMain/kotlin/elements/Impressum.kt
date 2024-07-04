@@ -11,6 +11,7 @@ import website.composeapp.generated.resources.Res
 import website.composeapp.generated.resources.impressum
 import website.composeapp.generated.resources.impressumContent
 
+
 @Composable
 fun Impressum() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {

@@ -9,6 +9,7 @@ import org.jetbrains.compose.resources.painterResource
 import website.composeapp.generated.resources.Res
 import website.composeapp.generated.resources.placeholder
 
+
 @Composable
 fun LocationMap(modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {

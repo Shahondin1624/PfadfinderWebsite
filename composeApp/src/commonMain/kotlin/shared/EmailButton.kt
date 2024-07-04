@@ -9,8 +9,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import kotlinx.browser.window
 import kotlinx.coroutines.launch
+import openWindow
 
 @Composable
 fun EmailButton(targetText: String, emailAddress: String, modifier: Modifier = Modifier) {
@@ -27,7 +27,7 @@ fun EmailButton(targetText: String, emailAddress: String, modifier: Modifier = M
     }
 }
 
-private suspend fun sendEmail(address: String) {
+private fun sendEmail(address: String) {
     val link = "mailto:$address"
-    window.location.href = link
+    openWindow(link)
 }

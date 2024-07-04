@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
-import kotlinx.browser.window
+import openWindow
 
 @Composable
 fun DescribedContent(modifier: Modifier = Modifier, header: String, content: @Composable () -> Unit) {
@@ -53,7 +53,7 @@ fun DescribedTextWithLink(modifier: Modifier = Modifier, header: String, content
             onClick = { offset ->
                 content.getStringAnnotations(tag = "URL", start = offset, end = offset)
                     .firstOrNull()?.let { annotation ->
-                        window.open(annotation.item, "_blank")
+                        openWindow(annotation.item)
                     }
             }
         )

@@ -18,6 +18,10 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import shared.*
 import website.composeapp.generated.resources.*
+import website.composeapp.generated.resources.Res
+import website.composeapp.generated.resources.cubScoutsDescription
+import website.composeapp.generated.resources.emailCubScouts
+import website.composeapp.generated.resources.placeholder
 
 @Composable
 fun StagesPage() {

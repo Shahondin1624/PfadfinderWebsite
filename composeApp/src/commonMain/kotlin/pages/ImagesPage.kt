@@ -9,6 +9,7 @@ import website.composeapp.generated.resources.Res
 import website.composeapp.generated.resources.compose_multiplatform
 import website.composeapp.generated.resources.placeholder
 
+
 @Composable
 fun ImagesPage() {
     ImageList(

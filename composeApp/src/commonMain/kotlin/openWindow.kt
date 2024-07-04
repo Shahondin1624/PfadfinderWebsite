@@ -1,0 +1,1 @@
+expect fun openWindow(url: String)
