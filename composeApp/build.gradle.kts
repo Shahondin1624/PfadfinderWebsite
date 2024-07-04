@@ -63,6 +63,13 @@ kotlin {
         dependsOn("wasmJsProductionExecutableCompileSync")
     }
 
+    tasks.register("printVersion") {
+        doLast {
+            println(version)
+        }
+    }
+
+
     tasks.register<Exec>("dockerBuildWasm") {
         group = "docker"
         description = "Builds the Docker image for wasm."
