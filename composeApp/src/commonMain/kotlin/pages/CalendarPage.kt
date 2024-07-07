@@ -38,17 +38,28 @@ fun CalendarPage() {
                 .background(color = MaterialTheme.colorScheme.primaryContainer)
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                H2(
-                    text = "Currently in construction...",
-                    color = MaterialTheme.colorScheme.error,
-                    modifier = Modifier.padding(vertical = 10.dp)
-                )
-                Image(
-                    painter = painterResource(Res.drawable.under_construction),
-                    contentDescription = "Under construction",
-                    modifier = Modifier.padding(vertical = 10.dp)
-                )
+                CalendarPlaceholder()
+                Calendar()
             }
         }
     }
+}
+
+@Composable
+fun Calendar() {
+
+}
+
+@Composable
+private fun CalendarPlaceholder() {
+    H2(
+        text = "Currently in construction...",
+        color = MaterialTheme.colorScheme.error,
+        modifier = Modifier.padding(vertical = 10.dp)
+    )
+    Image(
+        painter = painterResource(Res.drawable.under_construction),
+        contentDescription = "Under construction",
+        modifier = Modifier.padding(vertical = 10.dp)
+    )
 }

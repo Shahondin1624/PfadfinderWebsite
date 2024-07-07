@@ -14,8 +14,8 @@ fun createLinkTarget(
     content: String,
     annotate: String,
     linkTarget: String,
-    contentColor: Color = MaterialTheme.colorScheme.onPrimaryContainer,
-    linkColor: Color = MaterialTheme.colorScheme.tertiary
+    contentColor: Color = MaterialTheme.colorScheme.onSurface,
+    linkColor: Color = MaterialTheme.colorScheme.onTertiary
 ): AnnotatedString {
     return buildAnnotatedString {
         val startIndex = content.indexOf(annotate)

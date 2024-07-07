@@ -59,49 +59,48 @@ kotlin {
         }
     }
 
-    tasks.named("jsBrowserProductionWebpack") {
-        dependsOn("wasmJsProductionExecutableCompileSync")
-    }
+    tasks {
+        val releaseBuildLocation =
+            project.projectDir
+                .resolve("composeApp")
+                .resolve("build")
+                .resolve("dist")
+                .resolve("productionExecutable")
+        val clearDocsFolder = "clearDocsFolder"
+        val release = "release"
 
-    tasks.register("printVersion") {
-        doLast {
-            println(version)
+        named("jsBrowserProductionWebpack") {
+            dependsOn("wasmJsProductionExecutableCompileSync")
         }
-    }
 
-    tasks.register<Exec>("dockerBuildWasm") {
-        group = "docker"
-        description = "Builds the Docker image for wasm."
-        dependsOn("wasmJsBrowserDistribution")
-        commandLine("docker", "build", "-f", "wasm.Dockerfile", "-t", "pfadfinder-website-wasm:${project.version}", ".")
-    }
+        register("printVersion") {
+            doLast {
+                println(version)
+            }
+        }
 
-    tasks.register<Exec>("dockerBuildJs") {
-        group = "docker"
-        description = "Builds the Docker image for js."
-        dependsOn("jsBrowserDistribution")
-        commandLine("docker", "build", "-f", "js.Dockerfile", "-t", "pfadfinder-website-js:${project.version}", ".")
-    }
+        register<Delete>(clearDocsFolder) {
+            group = release
+            description = "Deletes the previous release"
+            delete(fileTree(project.projectDir.resolve("docs")))
+        }
 
-    tasks.register<Exec>("dockerRunWasm") {
-        group = "docker"
-        description = "Runs the Docker image."
-        dependsOn("dockerBuildWasm")
-        commandLine("docker", "run", "-p", "80:80", "pfadfinder-website-wasm:${project.version}")
-    }
+        register<Copy>("copyRelease") {
+            group = release
+            logger.lifecycle("Copying release to /docs")
+            from(releaseBuildLocation)
+            into(project.projectDir.resolve("docs"))
+        }
 
-    tasks.register<Exec>("dockerRunJs") {
-        group = "docker"
-        description = "Runs the Docker image."
-        dependsOn("dockerBuildJs")
-        commandLine("docker", "run", "-p", "80:80", "pfadfinder-website-js:${project.version}")
-    }
-
-    tasks.register<Exec>("release") {
-        group = "release"
-        description = "Compiles each target and then builds docker images"
-        mustRunAfter("dockerBuildWasm")
-        mustRunAfter("dockerBuildJs")
+        register(release) {
+            doLast {
+                logger.lifecycle("Creating versions-file")
+                val docsFolder = project.projectDir.resolve("docs")
+                val versionsFile = docsFolder.resolve("version.txt")
+                versionsFile.createNewFile()
+                versionsFile.writeText(version.toString())
+            }
+        }
     }
 }
 
