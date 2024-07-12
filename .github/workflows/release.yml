@@ -36,10 +36,10 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: /composeApp/build/dist/wasmJS/productionExecutable/**
+          files: composeApp/build/dist/wasmJS/productionExecutable/**
           tag_name: ${{ env.version }}
 
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-         folder: /composeApp/build/dist/wasmJS/productionExecutable/
+         folder: composeApp/build/dist/wasmJS/productionExecutable/
