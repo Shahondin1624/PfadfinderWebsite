@@ -27,6 +27,14 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew wasmJsBrowserDistribution
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with: 
+          name: website-artifact
+          path: composeApp/build/dist/wasmJs/productionExecutable/
+          if-no-files-found: error
+          retention-days: 1
+
       - name: Get version
         id: get_version
         run: |
@@ -36,10 +44,10 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: composeApp/build/dist/wasmJS/productionExecutable/**
+          files: docs/**
           tag_name: ${{ env.version }}
 
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-         folder: composeApp/build/dist/wasmJS/productionExecutable/
+         folder: docs/
