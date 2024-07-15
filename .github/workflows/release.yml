@@ -27,9 +27,6 @@ jobs:
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
-      - name: Print working directory and list contents
-        run: find . -type d
-
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         id: artifact-upload-step
@@ -48,13 +45,22 @@ jobs:
           version=$(./gradlew -q printVersion)
           echo "version=$version" >> $GITHUB_ENV
 
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: pfadfinder-website-artifact-${{ env.version }}
+          path: ${{ runner.temp }}/artifact
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ./composeApp/build/dist/wasmJs/productionExecutable/
+          files: ${{ runner.temp }}/artifact/
           tag_name: ${{ env.version }}
+
+      - name: Unzip Artifact
+        run: unzip ${{ runner.temp }}/artifact/*.zip -d ${{ runner.temp }}/artifact/unpacked/
 
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-         folder: composeApp/build/dist/wasmJS/productionExecutable/
+         folder: ${{ runner.temp }}/artifact/unpacked/
