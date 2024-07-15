@@ -25,6 +25,17 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      id: artifact-upload-step
+      with:
+        path: /composeApp/build/dist/wasmJs/productionExecutable/
+        if-no-files-found: error
+        retention-days: 1
+        overwrite: true
+    - name: Post Artifact ID
+      run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
+
   dependency-submission:
 
     runs-on: ubuntu-latest
@@ -41,18 +52,3 @@ jobs:
 
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
-
-  upload-artifact:
-
-      runs-on: ubuntu-latest
-      steps:
-      - name: Upload Artifact
-      - uses: actions/upload-artifact@v4
-        id: artifact-upload-step
-        with:
-          path: /composeApp/build/dist/wasmJs/productionExecutable/
-          if-no-files-found: error
-          retention-days: 1
-          overwrite: true
-      - name: Post Artifact ID
-        run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
