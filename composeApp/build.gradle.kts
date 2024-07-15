@@ -74,6 +74,10 @@ kotlin {
             dependsOn("wasmJsProductionExecutableCompileSync")
         }
 
+        named("wasmJsBrowserProductionWebpack") {
+            dependsOn("jsProductionExecutableCompileSync")
+        }
+
         register("printVersion") {
             doLast {
                 println(version)
