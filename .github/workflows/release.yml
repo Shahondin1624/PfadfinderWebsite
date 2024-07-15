@@ -27,8 +27,12 @@ jobs:
       - name: Build with Gradle Wrapper
         run: ./gradlew build
 
-      - name: List files
-        run: ls -R /composeApp/build/dist/wasmJs/productionExecutable/
+      - name: Print working directory and list contents
+        run: |
+          echo "Working directory: $(pwd)"
+          echo "Directory contents:"
+          ls -R
+
 
 
       - name: Upload Artifact
