@@ -45,10 +45,14 @@ jobs:
           version=$(./gradlew -q printVersion)
           echo "version=$version" >> $GITHUB_ENV
 
+      - name: Create Directory
+        run: mkdir -p ${{ runner.temp }}/artifact
+
       - name: Download Artifact by ID
         run: |
           curl -L -o ${{ runner.temp }}/artifact/artifact.zip -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}/zip"
+
 
       - name: List Downloaded Files
         run: ls -l ${{ runner.temp }}/artifact/
