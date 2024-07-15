@@ -54,8 +54,11 @@ jobs:
           "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}/zip"
 
 
-      - name: List Downloaded Files
-        run: ls -l ${{ runner.temp }}/artifact/
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ runner.temp }}/artifact/
+          tag_name: ${{ env.version }}
 
       - name: Unzip Artifact
         run: unzip ${{ runner.temp }}/artifact/artifact.zip -d ${{ runner.temp }}/artifact/unpacked/
