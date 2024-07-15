@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         id: artifact-upload-step
         with:
-          path: /composeApp/build/dist/wasmJs/productionExecutable/
+          path: ./composeApp/build/dist/wasmJs/productionExecutable/
           if-no-files-found: error
           retention-days: 1
           overwrite: true
@@ -51,7 +51,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: composeApp/build/dist/wasmJS/productionExecutable/
+          files: ./composeApp/build/dist/wasmJs/productionExecutable/
           tag_name: ${{ env.version }}
 
       - name: Deploy to Github Pages
