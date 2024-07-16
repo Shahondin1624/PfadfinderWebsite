@@ -95,6 +95,9 @@ jobs:
       - name: Unzip Artifact
         run: unzip ${{ runner.temp }}/artifact/artifact.zip -d ${{ runner.temp }}/artifact/unpacked/
 
+      - name: Change file permissions
+        run: chmod -R 755 /home/runner/work/_temp/artifact/unpacked/
+
       - name: Deploy to Github Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
