@@ -6,6 +6,8 @@ on:
       - master
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
 jobs:
   release:
@@ -52,15 +54,27 @@ jobs:
         run: |
           curl -L -o ${{ runner.temp }}/artifact/artifact.zip -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           "https://api.github.com/repos/${{ github.repository }}/actions/artifacts/${{ steps.artifact-upload-step.outputs.artifact-id }}/zip"
-
-      - name: List Downloaded Files
-        run: ls -l ${{ runner.temp }}/artifact/
-
-      - name: Release
-        uses: softprops/action-gh-release@v2
+      
+      - name: Create Release
+        uses: actions/create-release@v1
+        id: create_release
         with:
-          files: ${{ runner.temp }}/artifact/
+          draft: false
+          prerelease: false
+          release_name: Release ${{ env.version }}
           tag_name: ${{ env.version }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Upload Artifact to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ${{ runner.temp }}/artifact/artifact.zip
+          asset_name: pfadfinder-website-artifact.zip
+          asset_content_type: application/zip
 
       - name: Unzip Artifact
         run: unzip ${{ runner.temp }}/artifact/artifact.zip -d ${{ runner.temp }}/artifact/unpacked/
@@ -69,6 +83,11 @@ jobs:
         run: ls -l /home/runner/work/_temp/artifact/unpacked/
 
       - name: Deploy to Github Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Build
+        uses: actions/jekyll-build-pages@v1
         with:
-         folder: ${{ runner.temp }}/artifact/unpacked/
+          source: ${{ runner.temp }}/artifact/unpacked/
+      - name: Upload artifact to pages
+        uses: actions/upload-pages-artifact@v3
