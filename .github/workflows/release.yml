@@ -79,15 +79,10 @@ jobs:
       - name: Unzip Artifact
         run: unzip ${{ runner.temp }}/artifact/artifact.zip -d ${{ runner.temp }}/artifact/unpacked/
 
-      - name: List Unzipped Files
-        run: ls -l /home/runner/work/_temp/artifact/unpacked/
-
       - name: Deploy to Github Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-      - name: Build
-        uses: actions/jekyll-build-pages@v1
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          source: ${{ runner.temp }}/artifact/unpacked/
-      - name: Upload artifact to pages
-        uses: actions/upload-pages-artifact@v3
+          folder: ${{ runner.temp }}/artifact/unpacked/
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+
