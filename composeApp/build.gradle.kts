@@ -49,7 +49,7 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
                 implementation(compose.materialIconsExtended)
-                implementation("io.github.wojciechosak:calendar:1.0.1")
+//                implementation("io.github.wojciechosak:calendar:1.0.1")
             }
         }
         val jsMain by getting {
