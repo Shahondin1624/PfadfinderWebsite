@@ -30,7 +30,7 @@ fun TribePage() {
         H1(text = stringResource(Res.string.header), modifier = Modifier.padding(vertical = 10.dp))
         H3(text = stringResource(Res.string.villageName), modifier = Modifier.padding(vertical = 10.dp))
         ImageSpinner(
-            images = listOf(Res.drawable.placeholder, Res.drawable.compose_multiplatform),
+            images = listOf(Res.drawable.logo, Res.drawable.placeholder, Res.drawable.compose_multiplatform),
             modifier = Modifier.height(height = 400.dp).fillMaxWidth().padding(vertical = 10.dp)
         )
         H2(text = stringResource(Res.string.tribeDescriptionHeader), modifier = Modifier.padding(vertical = 10.dp))
@@ -43,9 +43,10 @@ fun TribePage() {
             shape = RoundedCornerShape(10.dp)
         ) {
             LazyVerticalStaggeredGrid(
-                columns = StaggeredGridCells.Adaptive(300.dp),
+                modifier = Modifier.fillMaxSize().align(Alignment.CenterHorizontally),
+                columns = StaggeredGridCells.Adaptive(400.dp),
                 verticalItemSpacing = 10.dp,
-                horizontalArrangement = Arrangement.spacedBy(10.dp),
+                horizontalArrangement = Arrangement.SpaceAround,
                 content = {
                     item {
                         DescribedTextWithLink(
