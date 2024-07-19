@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.1.8"
+version = "0.2.0"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
@@ -49,6 +49,7 @@ kotlin {
                 implementation(compose.components.uiToolingPreview)
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
                 implementation(compose.materialIconsExtended)
+                implementation("dev.chrisbanes.material3:material3-window-size-class-multiplatform:0.5.0")
 //                implementation("io.github.wojciechosak:calendar:1.0.1")
             }
         }
