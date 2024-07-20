@@ -6,17 +6,15 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import shared.CustomCard
 import shared.CustomHorizontalDivider
 import shared.H1
 import shared.H2
@@ -34,13 +32,7 @@ fun CalendarPage() {
     ) {
         H1(text = stringResource(Res.string.calendarHeader), modifier = Modifier.padding(vertical = 10.dp))
         CustomHorizontalDivider()
-        Card(
-            modifier = Modifier
-                .padding(horizontal = 50.dp).padding(vertical = 10.dp)
-                .background(color = MaterialTheme.colorScheme.primaryContainer)
-                .shadow(elevation = 5.dp),
-            shape = RoundedCornerShape(10.dp)
-        ) {
+        CustomCard {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 CalendarPlaceholder()
                 Calendar()
@@ -64,6 +56,6 @@ private fun CalendarPlaceholder() {
     Image(
         painter = painterResource(Res.drawable.under_construction),
         contentDescription = "Under construction",
-        modifier = Modifier.padding(vertical = 10.dp)
+        modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)
     )
 }

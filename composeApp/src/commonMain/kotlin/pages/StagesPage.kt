@@ -1,48 +1,35 @@
 package pages
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
-import androidx.compose.material3.MaterialTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
+import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import elements.Stage
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
-import shared.*
+import shared.CustomHorizontalDivider
+import shared.DescribedImage
+import shared.H1
+import shared.Position
 import website.composeapp.generated.resources.*
-import website.composeapp.generated.resources.Res
-import website.composeapp.generated.resources.cubScoutsDescription
-import website.composeapp.generated.resources.emailCubScouts
-import website.composeapp.generated.resources.placeholder
 
 @Composable
 fun StagesPage() {
-    val scrollState = rememberScrollState()
-    Column(
-        modifier = Modifier.fillMaxSize().background(color = MaterialTheme.colorScheme.inversePrimary)
-            .padding(all = 10.dp).verticalScroll(scrollState), horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        H1(text = "Unsere Stufen", modifier = Modifier.padding(vertical = 10.dp))
-        CustomHorizontalDivider()
-        Card(
-            modifier = Modifier
-                .padding(horizontal = 50.dp).padding(vertical = 10.dp)
-                .background(color = MaterialTheme.colorScheme.primaryContainer)
-                .shadow(elevation = 5.dp),
-            shape = RoundedCornerShape(10.dp)
-        ) {
-            Column {
+    LazyVerticalStaggeredGrid(modifier = Modifier.fillMaxSize(),
+        columns = StaggeredGridCells.Adaptive(400.dp),
+        verticalItemSpacing = 50.dp,
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        contentPadding = PaddingValues(10.dp),
+        content = {
+            item(span = StaggeredGridItemSpan.FullLine) {
+                StagesPageHeader()
+            }
+            item {
                 Stage(
                     stage = "Wölflings",
                     emailAddress = stringResource(Res.string.emailCubScouts),
@@ -53,9 +40,11 @@ fun StagesPage() {
                     Image(
                         painter = painterResource(Res.drawable.placeholder),
                         contentDescription = null,
-                        modifier = Modifier.padding(vertical = 50.dp)
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
                     )
                 }
+            }
+            item {
                 Stage(
                     stage = "Pfadfinder",
                     emailAddress = stringResource(Res.string.emailScouts),
@@ -64,27 +53,27 @@ fun StagesPage() {
                     description = stringResource(Res.string.scoutsDescription)
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                        Row {
-                            DescribedImage(
-                                text = "Sippe Dachs",
-                                position = Position.TOP,
-                                image = Res.drawable.placeholder,
-                                modifier = Modifier.padding(horizontal = 10.dp)
-                            )
-                            DescribedImage(
-                                text = "Sippe Fledermaus",
-                                position = Position.TOP,
-                                image = Res.drawable.placeholder,
-                                modifier = Modifier.padding(horizontal = 10.dp)
-                            )
-                        }
+                        DescribedImage(
+                            text = "Sippe Dachs",
+                            position = Position.TOP,
+                            image = Res.drawable.placeholder,
+                            modifier = Modifier.padding(horizontal = 10.dp)
+                        )
+                        DescribedImage(
+                            text = "Sippe Fledermaus",
+                            position = Position.TOP,
+                            image = Res.drawable.placeholder,
+                            modifier = Modifier.padding(horizontal = 10.dp)
+                        )
                         Image(
                             painter = painterResource(Res.drawable.placeholder),
                             contentDescription = null,
-                            modifier = Modifier.padding(vertical = 10.dp).padding(horizontal = 50.dp)
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
                         )
                     }
                 }
+            }
+            item {
                 Stage(
                     stage = "Rover",
                     emailAddress = stringResource(Res.string.emailRover),
@@ -92,10 +81,20 @@ fun StagesPage() {
                 ) {
                     Image(
                         painter = painterResource(Res.drawable.placeholder), contentDescription = null,
-                        modifier = Modifier.padding(vertical = 10.dp).padding(horizontal = 50.dp)
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
                     )
                 }
             }
-        }
+        })
+}
+
+@Composable
+private fun StagesPageHeader() {
+    Column(
+        modifier = Modifier.fillMaxSize()
+            .padding(all = 10.dp), horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        H1(text = "Unsere Stufen", modifier = Modifier.padding(vertical = 10.dp))
+        CustomHorizontalDivider()
     }
 }
