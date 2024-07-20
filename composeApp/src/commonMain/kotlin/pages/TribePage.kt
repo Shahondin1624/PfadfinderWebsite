@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import elements.ImageSpinner
 import elements.LocationMap
+import model.Address
 import org.jetbrains.compose.resources.stringResource
 import shared.*
 import website.composeapp.generated.resources.*
@@ -18,6 +19,14 @@ import website.composeapp.generated.resources.*
 
 @Composable
 fun TribePage() {
+    val address = Address(
+        name = stringResource(Res.string.header),
+        street = stringResource(Res.string.addressStreet),
+        houseNumber = stringResource(Res.string.addressHouseNumber),
+        postalCode = stringResource(Res.string.addressZipCode),
+        cityName = stringResource(Res.string.addressCityName),
+        link = stringResource(Res.string.addressGoogleMapsLink),
+    )
     LazyVerticalStaggeredGrid(
         modifier = Modifier.fillMaxSize(),
         columns = StaggeredGridCells.Adaptive(400.dp),
@@ -30,23 +39,23 @@ fun TribePage() {
             }
             item {
                 CustomCard {
-                    DescribedTextWithLink(
+                    DescribedText(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
                         header = stringResource(Res.string.info),
-                        content = createLinkTarget(
-                            stringResource(Res.string.infoContent),
-                            annotate = "Europapfadfindern St.Michael",
-                            linkTarget = "https://www.michaelspfadfinder.de/"
-                        )
+                        content = stringResource(Res.string.infoContent)
                     )
                 }
             }
             item {
                 CustomCard {
-                    DescribedText(
+                    DescribedTextWithLink(
                         modifier = Modifier.padding(horizontal = 10.dp, vertical = 20.dp),
                         header = stringResource(Res.string.europaPfadfinderStMichael),
-                        content = stringResource(Res.string.europaPfadfinderStMichaelContent)
+                        content = createLinkTarget(
+                            stringResource(Res.string.europaPfadfinderStMichaelContent),
+                            annotate = "Europapfadfinder St. Michael",
+                            linkTarget = "https://www.michaelspfadfinder.de"
+                        )
                     )
                 }
             }
@@ -75,7 +84,12 @@ fun TribePage() {
                         targetText = "Stammesführung",
                         emailAddress = stringResource(Res.string.emailTribe)
                     )
-                    LocationMap(modifier = Modifier.padding(vertical = 10.dp))
+                    CustomCard {
+                        LocationMap(
+                            modifier = Modifier.width(200.dp).padding(vertical = 10.dp, horizontal = 10.dp),
+                            address = address
+                        )
+                    }
                 }
             }
         })

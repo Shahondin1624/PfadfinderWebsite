@@ -15,7 +15,7 @@ fun createLinkTarget(
     annotate: String,
     linkTarget: String,
     contentColor: Color = MaterialTheme.colorScheme.onSurface,
-    linkColor: Color = MaterialTheme.colorScheme.onTertiary
+    linkColor: Color = MaterialTheme.colorScheme.secondary
 ): AnnotatedString {
     return buildAnnotatedString {
         val startIndex = content.indexOf(annotate)
@@ -24,7 +24,7 @@ fun createLinkTarget(
             withStyle(style = SpanStyle(color = contentColor)) {
                 append(content.substring(0, startIndex))
             }
-            withStyle(style = SpanStyle(textDecoration = TextDecoration.Underline, color = linkColor, )) {
+            withStyle(style = SpanStyle(textDecoration = TextDecoration.Underline, color = linkColor)) {
                 pushStringAnnotation(tag = "URL", annotation = linkTarget)
                 append(content.substring(startIndex, endIndex))
                 pop()
