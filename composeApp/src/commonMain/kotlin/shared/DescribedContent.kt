@@ -13,29 +13,36 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.LineHeightStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import openWindow
 
 @Composable
 fun DescribedContent(modifier: Modifier = Modifier, header: String, content: @Composable () -> Unit) {
     Column(modifier = modifier) {
-        H3(text = header, modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp))
+        H3(text = header, modifier = Modifier.padding(bottom = 20.dp).align(Alignment.CenterHorizontally))
         content()
     }
 }
 
 @Composable
-fun DescribedText(modifier: Modifier = Modifier, header: String, content: String) {
+fun DescribedText(
+    modifier: Modifier = Modifier,
+    textModifier: Modifier = Modifier.fillMaxWidth(),
+    header: String,
+    content: String
+) {
     DescribedContent(modifier, header) {
         Text(
             text = content,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = textModifier,
             style = LocalTextStyle.current.merge(
                 lineHeightStyle = LineHeightStyle(
                     alignment = LineHeightStyle.Alignment.Center,
                     trim = LineHeightStyle.Trim.Both
                 )
-            )
+            ),
+            textAlign = TextAlign.Center
         )
     }
 }
@@ -43,13 +50,13 @@ fun DescribedText(modifier: Modifier = Modifier, header: String, content: String
 @Composable
 fun DescribedTextWithLink(modifier: Modifier = Modifier, header: String, content: AnnotatedString) {
     DescribedContent(modifier, header) {
-        TextLink(content)
+        TextLink(content = content)
     }
 }
 
 @Composable
-fun TextLink(content: AnnotatedString) {
-    Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
+fun TextLink(modifier: Modifier = Modifier, content: AnnotatedString) {
+    Box(modifier = modifier, contentAlignment = Alignment.Center) {
         ClickableText(
             text = content,
             style = LocalTextStyle.current.merge(

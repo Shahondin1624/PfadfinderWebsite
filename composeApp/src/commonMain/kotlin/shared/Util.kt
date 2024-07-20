@@ -39,3 +39,18 @@ fun createLinkTarget(
         }
     }
 }
+
+@Composable
+fun createLink(
+    link: String,
+    displayText: String,
+    linkColor: Color = MaterialTheme.colorScheme.secondary
+): AnnotatedString {
+    return buildAnnotatedString {
+        withStyle(style = SpanStyle(textDecoration = TextDecoration.Underline, color = linkColor)) {
+            pushStringAnnotation(tag = "URL", annotation = link)
+            append(displayText)
+            pop()
+        }
+    }
+}
