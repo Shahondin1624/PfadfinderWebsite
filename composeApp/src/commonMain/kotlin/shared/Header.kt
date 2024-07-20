@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 
 @Composable
 fun H1(
@@ -63,6 +64,7 @@ private fun Header(
         modifier = modifier,
         text = text,
         style = theme,
-        color = color
+        color = color,
+        textAlign = TextAlign.Center
     )
 }

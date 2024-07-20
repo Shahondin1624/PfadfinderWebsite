@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.2.5"
+version = "0.2.6"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)

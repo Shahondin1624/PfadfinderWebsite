@@ -40,4 +40,8 @@
     <string name="addressCityName">Wiesentheid</string>
     <string name="addressGoogleMapsLink">https://maps.app.goo.gl/VpughJbP6sAGDqSS6</string>
     <string name="downloads">Downloads</string>
+    <string name="paypal">Paypal</string>
+    <string name="paypalHeader">Paypal</string>
+    <string name="paypalContent">TODO</string>
+    <string name="paypalLink">Paypal@pfadfinder-wiesentheid.de</string>
 </resources>
