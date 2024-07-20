@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -99,25 +101,27 @@ fun NavHostGraph(
     navController: NavHostController,
     innerPadding: PaddingValues
 ) {
-    NavHost(
-        navController = navController,
-        startDestination = Routes.TRIBE.name,
-        modifier = Modifier.padding(innerPadding)
-    ) {
-        composable(route = Routes.TRIBE.name) {
-            TribePage()
-        }
-        composable(route = Routes.STAGES.name) {
-            StagesPage()
-        }
-        composable(route = Routes.CALENDAR.name) {
-            CalendarPage()
-        }
-        composable(route = Routes.IMAGES.name) {
-            ImagesPage()
-        }
-        composable(route = Routes.COPYRIGHT.name) {
-            CopyrightPage()
+    Surface(color = MaterialTheme.colorScheme.inversePrimary) {
+        NavHost(
+            navController = navController,
+            startDestination = Routes.TRIBE.name,
+            modifier = Modifier.padding(innerPadding)
+        ) {
+            composable(route = Routes.TRIBE.name) {
+                TribePage()
+            }
+            composable(route = Routes.STAGES.name) {
+                StagesPage()
+            }
+            composable(route = Routes.CALENDAR.name) {
+                CalendarPage()
+            }
+            composable(route = Routes.IMAGES.name) {
+                ImagesPage()
+            }
+            composable(route = Routes.COPYRIGHT.name) {
+                CopyrightPage()
+            }
         }
     }
 }
