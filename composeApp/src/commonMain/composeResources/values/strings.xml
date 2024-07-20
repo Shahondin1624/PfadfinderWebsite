@@ -34,4 +34,9 @@
     <string name="emailCubScouts">Meute@pfadfinder-wiesentheid.de</string>
     <string name="emailScouts">Trupp@pfadfinder-wiesentheid.de</string>
     <string name="emailRover">Rover@pfadfinder-wiesentheid.de</string>
+    <string name="addressStreet">Kolpingstraße</string>
+    <string name="addressHouseNumber">2</string>
+    <string name="addressZipCode">97353</string>
+    <string name="addressCityName">Wiesentheid</string>
+    <string name="addressGoogleMapsLink">https://maps.app.goo.gl/VpughJbP6sAGDqSS6</string>
 </resources>
