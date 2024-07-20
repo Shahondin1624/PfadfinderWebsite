@@ -74,6 +74,14 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     }
     item {
         Button(
+            onClick = { navController.navigate(Routes.DOWNLOADS.name) },
+            modifier = Modifier.padding(horizontal = 10.dp)
+        ) {
+            Text(text = stringResource(Res.string.downloads))
+        }
+    }
+    item {
+        Button(
             onClick = { navController.navigate(Routes.COPYRIGHT.name) },
             modifier = Modifier.padding(horizontal = 10.dp)
         ) {
@@ -118,6 +126,9 @@ fun NavHostGraph(
             }
             composable(route = Routes.IMAGES.name) {
                 ImagesPage()
+            }
+            composable(route = Routes.DOWNLOADS.name) {
+                DownloadPage()
             }
             composable(route = Routes.COPYRIGHT.name) {
                 CopyrightPage()

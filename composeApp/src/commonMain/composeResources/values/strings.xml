@@ -39,4 +39,5 @@
     <string name="addressZipCode">97353</string>
     <string name="addressCityName">Wiesentheid</string>
     <string name="addressGoogleMapsLink">https://maps.app.goo.gl/VpughJbP6sAGDqSS6</string>
+    <string name="downloads">Downloads</string>
 </resources>
