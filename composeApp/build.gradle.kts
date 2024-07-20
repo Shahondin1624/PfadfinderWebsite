@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.2.4"
+version = "0.2.5"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
@@ -77,6 +77,16 @@ kotlin {
 
         named("wasmJsBrowserProductionWebpack") {
             dependsOn("jsProductionExecutableCompileSync")
+        }
+
+        register<Copy>("copyResources") {
+            from("composeApp/resources/downloads")
+            into("build/resources")
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        }
+
+        withType<ProcessResources> {
+            dependsOn("copyResources")
         }
 
         register("printVersion") {
