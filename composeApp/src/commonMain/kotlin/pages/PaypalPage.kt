@@ -25,13 +25,11 @@ fun PaypalPage() {
                 header = stringResource(Res.string.paypalHeader),
                 content = stringResource(Res.string.paypalContent)
             )
-            TextLink(
+            LinkButton(
                 modifier = Modifier.padding(horizontal = 50.dp, vertical = 10.dp)
                     .align(Alignment.CenterHorizontally),
-                content = createLink(
-                    link = stringResource(Res.string.paypalLink),
-                    displayText = "Spenden"
-                )
+                link = stringResource(Res.string.paypalLink),
+                targetText = "Spenden"
             )
         }
     }

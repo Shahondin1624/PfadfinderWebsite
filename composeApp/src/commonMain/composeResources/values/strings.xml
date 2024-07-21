@@ -44,4 +44,5 @@
     <string name="paypalHeader">Paypal</string>
     <string name="paypalContent">TODO</string>
     <string name="paypalLink">Paypal@pfadfinder-wiesentheid.de</string>
+    <string name="boosterClubHeader">Förderverein</string>
 </resources>
