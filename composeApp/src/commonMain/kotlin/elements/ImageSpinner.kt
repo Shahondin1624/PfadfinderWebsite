@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import website.composeapp.generated.resources.Res
-import website.composeapp.generated.resources.left_arrow
-import website.composeapp.generated.resources.right_arrow
+import website.composeapp.generated.resources.icon_left_arrow
+import website.composeapp.generated.resources.icon_right_arrow
 
 @Composable
 fun ImageSpinner(modifier: Modifier = Modifier, images: List<DrawableResource>) {
@@ -32,7 +32,7 @@ fun ImageSpinner(modifier: Modifier = Modifier, images: List<DrawableResource>) 
             }
             image = images[index]
         }) {
-            Icon(painter = painterResource(Res.drawable.left_arrow), contentDescription = "Left Image")
+            Icon(painter = painterResource(Res.drawable.icon_left_arrow), contentDescription = "Left Image")
         }
         Image(painter = painterResource(image), contentDescription = "ImageSpinner", modifier = Modifier.weight(0.7f))
         IconButton(modifier = Modifier.align(Alignment.CenterVertically).weight(0.15f), onClick = {
@@ -44,7 +44,7 @@ fun ImageSpinner(modifier: Modifier = Modifier, images: List<DrawableResource>) 
             }
             image = images[index]
         }) {
-            Icon(painter = painterResource(Res.drawable.right_arrow), contentDescription = "Right Image")
+            Icon(painter = painterResource(Res.drawable.icon_right_arrow), contentDescription = "Right Image")
         }
     }
 }

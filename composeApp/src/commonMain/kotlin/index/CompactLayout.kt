@@ -16,7 +16,7 @@ import elements.BottomBar
 import navigation.Routes
 import org.jetbrains.compose.resources.painterResource
 import website.composeapp.generated.resources.Res
-import website.composeapp.generated.resources.logo
+import website.composeapp.generated.resources.icon_logo
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,7 +27,7 @@ fun CompactLayout(isInDarkMode: MutableState<Boolean>, navController: NavHostCon
                 onClick = { navController.navigate(Routes.TRIBE.name) },
                 modifier = Modifier.padding(start = 20.dp)
             ) {
-                Icon(painter = painterResource(Res.drawable.logo), contentDescription = "Logo")
+                Icon(painter = painterResource(Res.drawable.icon_logo), contentDescription = "Logo")
             }
         }, actions = {
             Row(horizontalArrangement = Arrangement.Center) {

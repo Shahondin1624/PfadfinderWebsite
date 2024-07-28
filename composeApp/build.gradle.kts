@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 }
 
-version = "0.2.6"
+version = "0.2.7"
 
 kotlin {
     @OptIn(ExperimentalWasmDsl::class)
@@ -50,14 +50,23 @@ kotlin {
                 implementation("org.jetbrains.androidx.navigation:navigation-compose:2.7.0-alpha07")
                 implementation(compose.materialIconsExtended)
                 implementation("dev.chrisbanes.material3:material3-window-size-class-multiplatform:0.5.0")
+                implementation("io.coil-kt.coil3:coil-compose:3.0.0-alpha06")
+                implementation("io.coil-kt.coil3:coil-network-ktor:3.0.0-alpha06")
+                implementation("tech.annexflow.compose:constraintlayout-compose-multiplatform:0.4.0")
 //                implementation("io.github.wojciechosak:calendar:1.0.1")
             }
         }
         val jsMain by getting {
             dependsOn(commonMain)
+            dependencies {
+                implementation("io.ktor:ktor-client-js:3.0.0-beta-2")
+            }
         }
         val wasmJsMain by getting {
             dependsOn(commonMain)
+            dependencies {
+                implementation("io.ktor:ktor-client-js:3.0.0-beta-2")
+            }
         }
     }
 

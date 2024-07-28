@@ -15,7 +15,7 @@ import org.jetbrains.compose.resources.stringResource
 import shared.*
 import website.composeapp.generated.resources.Res
 import website.composeapp.generated.resources.calendarHeader
-import website.composeapp.generated.resources.under_construction
+import website.composeapp.generated.resources.icon_under_construction
 
 
 @Composable
@@ -65,7 +65,7 @@ private fun CalendarPlaceholder() {
         modifier = Modifier.padding(vertical = 10.dp)
     )
     Image(
-        painter = painterResource(Res.drawable.under_construction),
+        painter = painterResource(Res.drawable.icon_under_construction),
         contentDescription = "Under construction",
         modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)
     )

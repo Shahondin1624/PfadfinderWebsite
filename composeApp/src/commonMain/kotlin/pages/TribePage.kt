@@ -1,10 +1,12 @@
 package pages
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import elements.ImageSpinner
 import elements.LocationMap
 import model.Address
+import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import shared.*
 import website.composeapp.generated.resources.*
@@ -78,6 +81,23 @@ fun TribePage() {
                 }
             }
             item(span = StaggeredGridItemSpan.FullLine) {
+                CustomCard {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(horizontal = 50.dp, vertical = 20.dp)
+                    ) {
+                        H2(text = "Herrenseehütte Untersambach")
+                        Spacer(Modifier.height(20.dp))
+                        Text(text = stringResource(Res.string.herrenseehuetteText))
+                        Spacer(Modifier.height(20.dp))
+                        Image(
+                            painter = painterResource(Res.drawable.icon_placeholder),
+                            contentDescription = "Bild der Herrenseehütte Untersambach"
+                        )
+                    }
+                }
+            }
+            item(span = StaggeredGridItemSpan.FullLine) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     HorizontalDivider()
                     EmailButton(
@@ -104,11 +124,9 @@ private fun TribePageHeader() {
         H1(text = stringResource(Res.string.header), modifier = Modifier.padding(vertical = 10.dp))
         H3(text = stringResource(Res.string.villageName), modifier = Modifier.padding(vertical = 10.dp))
         ImageSpinner(
-            images = listOf(
-                Res.drawable.logo,
-                Res.drawable.placeholder,
-                Res.drawable.compose_multiplatform
-            ),
+            images = imageList().apply {
+                this.add(0, Res.drawable.icon_logo)
+            },
             modifier = Modifier.height(height = 400.dp).fillMaxWidth().padding(vertical = 10.dp)
         )
         H2(
