@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import download
 import org.jetbrains.compose.resources.painterResource
 import website.composeapp.generated.resources.Res
-import website.composeapp.generated.resources.download
+import website.composeapp.generated.resources.icon_download
 
 @Composable
 fun DownloadButton(fileName: String) {
@@ -21,7 +21,7 @@ fun DownloadButton(fileName: String) {
     }) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Text(text = fileName, modifier = Modifier.padding(end = 10.dp))
-            Icon(painter = painterResource(Res.drawable.download), contentDescription = "Download $fileName")
+            Icon(painter = painterResource(Res.drawable.icon_download), contentDescription = "Download $fileName")
         }
     }
 }

@@ -6,8 +6,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun CustomHorizontalDivider() {
+fun CustomHorizontalDivider(modifier: Modifier = Modifier) {
     androidx.compose.material3.HorizontalDivider(
-        modifier = Modifier.padding(vertical = 10.dp).padding(horizontal = 50.dp)
+        modifier = modifier.padding(vertical = 10.dp).padding(horizontal = 50.dp)
     )
 }

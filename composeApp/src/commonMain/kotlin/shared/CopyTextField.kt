@@ -10,14 +10,14 @@ import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.text.AnnotatedString
 import org.jetbrains.compose.resources.painterResource
 import website.composeapp.generated.resources.Res
-import website.composeapp.generated.resources.copy
+import website.composeapp.generated.resources.icon_copy
 
 @Composable
 fun CopyTextField(text: String, label: String = "", modifier: Modifier = Modifier) {
     val clipboardManager = LocalClipboardManager.current
     TextField(value = text, readOnly = true, onValueChange = {}, minLines = 1, trailingIcon = {
         IconButton(onClick = { clipboardManager.setText(AnnotatedString(text)) }) {
-            Icon(painter = painterResource(Res.drawable.copy), contentDescription = "Copy value")
+            Icon(painter = painterResource(Res.drawable.icon_copy), contentDescription = "Copy value")
         }
     }, label = {
         Text(text = label)
