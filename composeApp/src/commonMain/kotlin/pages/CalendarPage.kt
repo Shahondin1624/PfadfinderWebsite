@@ -1,7 +1,6 @@
 package pages
 
 import ResourceDp
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
+import model.LocalImageResource
 import org.jetbrains.compose.resources.stringResource
 import shared.*
 import website.composeapp.generated.resources.Res
@@ -74,8 +73,8 @@ private fun CalendarPlaceholder() {
         color = MaterialTheme.colorScheme.error,
         modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
     )
-    Image(
-        painter = painterResource(Res.drawable.icon_under_construction),
+    CustomImage(
+        resourceAccessor = LocalImageResource(Res.drawable.icon_under_construction),
         contentDescription = "Under construction",
         modifier = Modifier.padding(horizontal = ResourceDp.largePadding, vertical = ResourceDp.largePadding)
     )

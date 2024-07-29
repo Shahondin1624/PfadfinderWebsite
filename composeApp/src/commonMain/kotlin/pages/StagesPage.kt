@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
-import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -15,8 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import elements.Stage
 import model.ContactPerson
+import model.LocalImageResource
 import org.jetbrains.compose.resources.stringResource
-import shared.*
+import shared.CustomHorizontalDivider
+import shared.DescribedImage
+import shared.H1
+import shared.Position
 import website.composeapp.generated.resources.*
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
@@ -37,9 +40,6 @@ fun StagesPage() {
                 StagesPageHeader()
             }
             item {
-                TribeLeaders(sizeClass = widthSizeClass)
-            }
-            item {
                 Stage(
                     stage = "Wölflings",
                     emailAddress = stringResource(Res.string.emailCubScouts),
@@ -56,7 +56,7 @@ fun StagesPage() {
                     DescribedImage(
                         text = "Meute Hathi",
                         position = Position.BOTTOM,
-                        image = Res.drawable.image_Meute_1,
+                        resourceAccessor = LocalImageResource(Res.drawable.image_Meute_1),
                         modifier = Modifier.padding(
                             horizontal = ResourceDp.horizontalCardPadding(),
                             vertical = ResourceDp.smallPadding
@@ -82,19 +82,19 @@ fun StagesPage() {
                         DescribedImage(
                             text = "Sippe Dachs",
                             position = Position.BOTTOM,
-                            image = Res.drawable.image_Sippe_Dachs,
+                            resourceAccessor = LocalImageResource(Res.drawable.image_Sippe_Dachs),
                             modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
                         )
                         DescribedImage(
                             text = "Sippe Fledermaus",
                             position = Position.BOTTOM,
-                            image = Res.drawable.image_Sippe_Fledermaus,
+                            resourceAccessor = LocalImageResource(Res.drawable.image_Sippe_Fledermaus),
                             modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
                         )
                         DescribedImage(
                             text = "Trupp Sebastian von Rotenhan",
                             position = Position.BOTTOM,
-                            image = Res.drawable.image_Trupp_Sebastian_von_Rotenhan,
+                            resourceAccessor = LocalImageResource(Res.drawable.image_Trupp_Sebastian_von_Rotenhan),
                             modifier = Modifier.padding(
                                 horizontal = ResourceDp.horizontalCardPadding(),
                                 vertical = ResourceDp.smallPadding
@@ -116,7 +116,7 @@ fun StagesPage() {
                     DescribedImage(
                         text = "Roverrunde St. Mauritius",
                         position = Position.BOTTOM,
-                        image = Res.drawable.image_Rover_1,
+                        resourceAccessor = LocalImageResource(Res.drawable.image_Rover_1),
                         modifier = Modifier.padding(
                             horizontal = ResourceDp.horizontalCardPadding(),
                             vertical = ResourceDp.smallPadding
@@ -135,25 +135,5 @@ private fun StagesPageHeader() {
     ) {
         H1(text = "Unsere Stufen", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
         CustomHorizontalDivider()
-    }
-}
-
-@Composable
-private fun TribeLeaders(sizeClass: WindowWidthSizeClass) {
-    CustomCard {
-        Column(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = ResourceDp.horizontalCardPadding()),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            H2(text = "Stammesführung", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
-            Text(text = "TODO")
-            HeadShotGrid(
-                contactPersons = listOf(
-                    ContactPerson(name = "Michi", image = Res.drawable.image_Michael_Headshot),
-                    ContactPerson(name = "Phuket (Fahrtenname)", image = Res.drawable.image_Phuket_Headshot)
-                ),
-                sizeClass = sizeClass
-            )
-        }
     }
 }

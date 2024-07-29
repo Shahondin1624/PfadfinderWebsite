@@ -8,7 +8,8 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
-import org.jetbrains.compose.resources.DrawableResource
+import model.LocalImageResource
+import model.ResourceAccessor
 import website.composeapp.generated.resources.*
 
 @Composable
@@ -61,13 +62,13 @@ fun getGithubContentPath(pathToImage: String): String {
     return "https://raw.githubusercontent.com/Shahondin1624/PfadfinderWebsite/master/$pathToImage"
 }
 
-fun imageList(): MutableList<DrawableResource> = mutableListOf(
-    Res.drawable.image_Meute_1,
-    Res.drawable.image_Fuehrung_1,
-    Res.drawable.image_Fuehrung_2,
-    Res.drawable.image_Fuehrung_3,
-    Res.drawable.image_Meute_1,
-    Res.drawable.image_Rover_1,
-    Res.drawable.image_Stamm_1,
-    Res.drawable.image_Stamm_2,
+fun imageList(): MutableList<ResourceAccessor> = mutableListOf(
+    LocalImageResource(Res.drawable.image_Meute_1),
+    LocalImageResource(Res.drawable.image_Fuehrung_1),
+    LocalImageResource(Res.drawable.image_Fuehrung_2),
+    LocalImageResource(Res.drawable.image_Fuehrung_3),
+    LocalImageResource(Res.drawable.image_Meute_1),
+    LocalImageResource(Res.drawable.image_Rover_1),
+    LocalImageResource(Res.drawable.image_Stamm_1),
+    LocalImageResource(Res.drawable.image_Stamm_2),
 )

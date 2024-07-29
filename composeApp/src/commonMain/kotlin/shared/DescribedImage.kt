@@ -1,24 +1,27 @@
 package shared
 
 import ResourceDp
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.painterResource
+import model.ResourceAccessor
 
 @Composable
-fun DescribedImage(text: String, position: Position, image: DrawableResource, modifier: Modifier = Modifier) {
+fun DescribedImage(
+    text: String,
+    position: Position,
+    resourceAccessor: ResourceAccessor,
+    modifier: Modifier = Modifier
+) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         if (position == Position.TOP) {
             Text(text, modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
         }
-        Image(
-            painterResource(image),
+        CustomImage(
+            resourceAccessor = resourceAccessor,
             contentDescription = null,
             modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
         )

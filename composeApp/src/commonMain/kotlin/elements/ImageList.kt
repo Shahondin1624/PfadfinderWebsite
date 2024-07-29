@@ -1,7 +1,6 @@
 package elements
 
 import ResourceDp
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -15,12 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.painterResource
+import model.ResourceAccessor
+import shared.CustomImage
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
-fun ImageList(images: List<DrawableResource>, modifier: Modifier = Modifier) {
+fun ImageList(images: List<ResourceAccessor>, modifier: Modifier = Modifier) {
     val widthSizeClass = calculateWindowSizeClass().widthSizeClass
     val imageWidth = when (widthSizeClass) {
         WindowWidthSizeClass.Compact -> 300
@@ -37,8 +36,8 @@ fun ImageList(images: List<DrawableResource>, modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.SpaceBetween,
             content = {
                 itemsIndexed(images) { _, image ->
-                    Image(
-                        painter = painterResource(image),
+                    CustomImage(
+                        resourceAccessor = image,
                         contentDescription = null,
                         modifier = Modifier.padding(horizontal = ResourceDp.mediumPadding)
                     )
