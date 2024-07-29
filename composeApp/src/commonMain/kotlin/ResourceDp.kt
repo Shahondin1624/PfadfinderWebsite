@@ -28,10 +28,10 @@ object ResourceDp {
     @Composable
     fun fieldSize(): Dp {
         return when (widthSizeClass()) {
-            WindowWidthSizeClass.Compact -> 100.dp
+            WindowWidthSizeClass.Compact -> 300.dp
             WindowWidthSizeClass.Medium -> 400.dp
-            WindowWidthSizeClass.Expanded -> 600.dp
-            else -> 800.dp
+            WindowWidthSizeClass.Expanded -> 800.dp
+            else -> 1000.dp
         }
     }
 

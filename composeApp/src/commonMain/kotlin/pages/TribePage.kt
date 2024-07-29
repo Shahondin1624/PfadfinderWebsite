@@ -97,34 +97,39 @@ fun TribePage() {
                 }
             }
             item(span = StaggeredGridItemSpan.FullLine) {
-                CustomCard(modifier = Modifier.width(ResourceDp.fieldSize())) {
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.padding(
-                            horizontal = ResourceDp.horizontalCardPadding(),
-                            vertical = ResourceDp.mediumPadding
-                        )
-                    ) {
-                        H2(text = "Herrenseehütte Untersambach")
-                        Spacer(Modifier.height(ResourceDp.mediumPadding))
-                        Text(text = stringResource(Res.string.herrenseehuetteText))
-                        Spacer(Modifier.height(ResourceDp.mediumPadding))
-                        Image(
-                            painter = painterResource(Res.drawable.icon_placeholder),
-                            contentDescription = "Bild der Herrenseehütte Untersambach"
-                        )
+                Column(
+                    modifier = Modifier.fillMaxSize()
+                        .padding(all = ResourceDp.smallPadding), horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    CustomHorizontalDivider()
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        CustomCard {
+                            Spacer(modifier = Modifier.height(ResourceDp.smallPadding))
+                            H2(text = "Herrenseehütte Untersambach")
+                            Spacer(Modifier.height(ResourceDp.mediumPadding))
+                            Text(
+                                text = stringResource(Res.string.herrenseehuetteText),
+                                modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
+                            )
+                            Spacer(Modifier.height(ResourceDp.mediumPadding))
+                            Image(
+                                painter = painterResource(Res.drawable.icon_placeholder),
+                                contentDescription = "Bild der Herrenseehütte Untersambach"
+                            )
+                            Spacer(modifier = Modifier.height(ResourceDp.smallPadding))
+                        }
                     }
                 }
             }
             item(span = StaggeredGridItemSpan.FullLine) {
-                val sizeClass = calculateWindowSizeClass().widthSizeClass
-                CustomCard(modifier = Modifier.width(ResourceDp.fieldSize())) {
-                    Column(
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = ResourceDp.horizontalCardPadding()),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    val sizeClass = calculateWindowSizeClass().widthSizeClass
+                    CustomCard {
                         H2(text = "Stammesführung", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
-                        Text(text = "TODO")
+                        Text(
+                            text = "TODO",
+                            modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
+                        )
                         HeadShotGrid(
                             contactPersons = stammesFuehrung(),
                             sizeClass = sizeClass
@@ -134,15 +139,19 @@ fun TribePage() {
                             targetText = "Stammesführung",
                             emailAddress = stringResource(Res.string.emailTribe)
                         )
-                        CustomCard {
-                            LocationMap(
-                                modifier = Modifier.width(ResourceDp.smallGridCellSize).padding(
-                                    vertical = ResourceDp.smallPadding,
-                                    horizontal = ResourceDp.horizontalCardPadding()
-                                ),
-                                address = address
-                            )
-                        }
+                    }
+                }
+            }
+            item(span = StaggeredGridItemSpan.FullLine) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    CustomCard {
+                        LocationMap(
+                            modifier = Modifier.width(ResourceDp.mediumGridCellSize).padding(
+                                vertical = ResourceDp.smallPadding,
+                                horizontal = ResourceDp.horizontalCardPadding()
+                            ),
+                            address = address
+                        )
                     }
                 }
             }

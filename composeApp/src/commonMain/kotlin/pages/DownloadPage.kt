@@ -22,7 +22,7 @@ fun DownloadPage() {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         H1(text = stringResource(Res.string.downloads), modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
         CustomHorizontalDivider()
-        CustomCard {
+        CustomCard(modifier = Modifier.fillMaxWidth()) {
             LazyVerticalStaggeredGrid(
                 modifier = Modifier.fillMaxSize(),
                 columns = StaggeredGridCells.Adaptive(ResourceDp.mediumGridCellSize),
