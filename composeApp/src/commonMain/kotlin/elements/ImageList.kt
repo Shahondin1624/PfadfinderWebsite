@@ -1,5 +1,6 @@
 package elements
 
+import ResourceDp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -32,14 +33,14 @@ fun ImageList(images: List<DrawableResource>, modifier: Modifier = Modifier) {
     Column(modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally) {
         LazyVerticalStaggeredGrid(
             columns = StaggeredGridCells.Adaptive(imageWidth),
-            verticalItemSpacing = 50.dp,
+            verticalItemSpacing = ResourceDp.largePadding,
             horizontalArrangement = Arrangement.SpaceBetween,
             content = {
                 itemsIndexed(images) { _, image ->
                     Image(
                         painter = painterResource(image),
                         contentDescription = null,
-                        modifier = Modifier.padding(horizontal = 25.dp)
+                        modifier = Modifier.padding(horizontal = ResourceDp.mediumPadding)
                     )
                 }
             }

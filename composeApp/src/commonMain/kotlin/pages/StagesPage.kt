@@ -1,5 +1,6 @@
 package pages
 
+import ResourceDp
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
@@ -28,9 +29,9 @@ fun StagesPage() {
     }
     LazyVerticalStaggeredGrid(modifier = Modifier.fillMaxSize(),
         columns = StaggeredGridCells.Adaptive(adaptiveWidth),
-        verticalItemSpacing = 50.dp,
+        verticalItemSpacing = ResourceDp.largePadding,
         horizontalArrangement = Arrangement.SpaceEvenly,
-        contentPadding = PaddingValues(10.dp),
+        contentPadding = PaddingValues(ResourceDp.smallPadding),
         content = {
             item(span = StaggeredGridItemSpan.FullLine) {
                 StagesPageHeader()
@@ -56,7 +57,10 @@ fun StagesPage() {
                         text = "Meute Hathi",
                         position = Position.BOTTOM,
                         image = Res.drawable.image_Meute_1,
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                        modifier = Modifier.padding(
+                            horizontal = ResourceDp.horizontalCardPadding(),
+                            vertical = ResourceDp.smallPadding
+                        )
                     )
                 }
             }
@@ -79,19 +83,22 @@ fun StagesPage() {
                             text = "Sippe Dachs",
                             position = Position.BOTTOM,
                             image = Res.drawable.image_Sippe_Dachs,
-                            modifier = Modifier.padding(horizontal = 10.dp)
+                            modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
                         )
                         DescribedImage(
                             text = "Sippe Fledermaus",
                             position = Position.BOTTOM,
                             image = Res.drawable.image_Sippe_Fledermaus,
-                            modifier = Modifier.padding(horizontal = 10.dp)
+                            modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
                         )
                         DescribedImage(
                             text = "Trupp Sebastian von Rotenhan",
                             position = Position.BOTTOM,
                             image = Res.drawable.image_Trupp_Sebastian_von_Rotenhan,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                            modifier = Modifier.padding(
+                                horizontal = ResourceDp.horizontalCardPadding(),
+                                vertical = ResourceDp.smallPadding
+                            )
                         )
                     }
                 }
@@ -110,7 +117,10 @@ fun StagesPage() {
                         text = "Roverrunde St. Mauritius",
                         position = Position.BOTTOM,
                         image = Res.drawable.image_Rover_1,
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                        modifier = Modifier.padding(
+                            horizontal = ResourceDp.horizontalCardPadding(),
+                            vertical = ResourceDp.smallPadding
+                        )
                     )
                 }
             }
@@ -121,9 +131,9 @@ fun StagesPage() {
 private fun StagesPageHeader() {
     Column(
         modifier = Modifier.fillMaxSize()
-            .padding(all = 10.dp), horizontalAlignment = Alignment.CenterHorizontally
+            .padding(all = ResourceDp.smallPadding), horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        H1(text = "Unsere Stufen", modifier = Modifier.padding(vertical = 10.dp))
+        H1(text = "Unsere Stufen", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
         CustomHorizontalDivider()
     }
 }
@@ -132,10 +142,10 @@ private fun StagesPageHeader() {
 private fun TribeLeaders(sizeClass: WindowWidthSizeClass) {
     CustomCard {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 50.dp),
+            modifier = Modifier.fillMaxWidth().padding(horizontal = ResourceDp.horizontalCardPadding()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            H2(text = "Stammesführung", modifier = Modifier.padding(vertical = 10.dp))
+            H2(text = "Stammesführung", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
             Text(text = "TODO")
             HeadShotGrid(
                 contactPersons = listOf(

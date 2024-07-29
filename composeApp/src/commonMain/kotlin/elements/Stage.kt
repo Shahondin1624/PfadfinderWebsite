@@ -1,5 +1,6 @@
 package elements
 
+import ResourceDp
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
@@ -30,7 +31,7 @@ fun Stage(
             modifier = Modifier.padding(horizontal = 50.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            H2(text = "${stage}stufe", modifier = Modifier.padding(vertical = 10.dp))
+            H2(text = "${stage}stufe", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
             ageRange?.let {
                 Text(
                     text = "${ageRange.first} bis ${ageRange.last} Jahre",
@@ -39,11 +40,15 @@ fun Stage(
                 )
             }
             meetingTime?.let {
-                Text(text = "Gruppenstunde", modifier = Modifier.padding(vertical = 10.dp))
-                Text(text = meetingTime, modifier = Modifier.padding(vertical = 10.dp))
+                Text(text = "Gruppenstunde", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
+                Text(text = meetingTime, modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
             }
-            Text(text = description, modifier = Modifier.padding(vertical = 10.dp).padding(horizontal = 50.dp))
-            Spacer(modifier = Modifier.padding(top = 50.dp))
+            Text(
+                text = description,
+                modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
+                    .padding(horizontal = ResourceDp.horizontalCardPadding())
+            )
+            Spacer(modifier = Modifier.padding(top = ResourceDp.largePadding))
             HeadShotGrid(contactPersons, sizeClass)
             CustomHorizontalDivider()
             EmailButton(targetText = "${stage}führung", emailAddress = emailAddress)

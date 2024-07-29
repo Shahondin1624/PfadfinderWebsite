@@ -1,5 +1,6 @@
 package shared
 
+import ResourceDp
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -8,7 +9,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import download
 import org.jetbrains.compose.resources.painterResource
 import website.composeapp.generated.resources.Res
@@ -20,7 +20,7 @@ fun DownloadButton(fileName: String) {
         download(fileName)
     }) {
         Row(modifier = Modifier.fillMaxWidth()) {
-            Text(text = fileName, modifier = Modifier.padding(end = 10.dp))
+            Text(text = fileName, modifier = Modifier.padding(end = ResourceDp.smallPadding))
             Icon(painter = painterResource(Res.drawable.icon_download), contentDescription = "Download $fileName")
         }
     }

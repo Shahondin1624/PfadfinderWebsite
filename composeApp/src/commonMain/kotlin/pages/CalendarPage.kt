@@ -1,15 +1,18 @@
 package pages
 
+import ResourceDp
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import shared.*
@@ -23,9 +26,13 @@ fun CalendarPage() {
     val scrollState = rememberScrollState()
     Column(
         modifier = Modifier.fillMaxSize().background(color = MaterialTheme.colorScheme.inversePrimary)
-            .padding(all = 10.dp).verticalScroll(scrollState), horizontalAlignment = Alignment.CenterHorizontally
+            .padding(all = ResourceDp.smallPadding).verticalScroll(scrollState),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        H1(text = stringResource(Res.string.calendarHeader), modifier = Modifier.padding(vertical = 10.dp))
+        H1(
+            text = stringResource(Res.string.calendarHeader),
+            modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
+        )
         CustomHorizontalDivider()
         CustomCard {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -42,17 +49,20 @@ fun Calendar() {
         CopyTextField(
             text = "https://pfadis.ocloud.de/index.php/apps/calendar/p/b3wXd462weC4KpWX",
             label = "Kalender-Wölflinge",
-            modifier = Modifier.width(400.dp).padding(vertical = 10.dp, horizontal = 50.dp)
+            modifier = Modifier.width(ResourceDp.fieldSize())
+                .padding(vertical = ResourceDp.smallPadding, horizontal = ResourceDp.horizontalCardPadding())
         )
         CopyTextField(
             text = "https://pfadis.ocloud.de/index.php/apps/calendar/p/s4jWaPoQz8NToLrB",
             label = "Kalender-Pfadfinder",
-            modifier = Modifier.width(400.dp).padding(vertical = 10.dp, horizontal = 50.dp)
+            modifier = Modifier.width(ResourceDp.fieldSize())
+                .padding(vertical = ResourceDp.smallPadding, horizontal = ResourceDp.horizontalCardPadding())
         )
         CopyTextField(
             text = "https://pfadis.ocloud.de/index.php/apps/calendar/p/jTQteKHDFNxxrLY7",
             label = "Kalender-Stamm",
-            modifier = Modifier.width(400.dp).padding(vertical = 10.dp, horizontal = 50.dp)
+            modifier = Modifier.width(ResourceDp.fieldSize())
+                .padding(vertical = ResourceDp.smallPadding, horizontal = ResourceDp.horizontalCardPadding())
         )
     }
 }
@@ -62,11 +72,11 @@ private fun CalendarPlaceholder() {
     H2(
         text = "Currently in construction...",
         color = MaterialTheme.colorScheme.error,
-        modifier = Modifier.padding(vertical = 10.dp)
+        modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
     )
     Image(
         painter = painterResource(Res.drawable.icon_under_construction),
         contentDescription = "Under construction",
-        modifier = Modifier.padding(horizontal = 50.dp, vertical = 50.dp)
+        modifier = Modifier.padding(horizontal = ResourceDp.largePadding, vertical = ResourceDp.largePadding)
     )
 }

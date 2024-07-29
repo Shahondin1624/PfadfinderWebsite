@@ -24,8 +24,8 @@ fun CustomCard(
         modifier = modifier
             .padding(16.dp)
             .clip(RoundedCornerShape(8.dp))
-            .shadow(elevation = 5.dp),
-        shape = RoundedCornerShape(10.dp)
+            .shadow(elevation = ResourceDp.verySmallPadding),
+        shape = RoundedCornerShape(ResourceDp.smallPadding)
     ) {
         Column(
             modifier = Modifier.background(color = MaterialTheme.colorScheme.secondaryContainer),

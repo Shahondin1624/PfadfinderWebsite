@@ -1,5 +1,6 @@
 package shared
 
+import ResourceDp
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,13 +15,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import openWindow
 
 @Composable
 fun DescribedContent(modifier: Modifier = Modifier, header: String, content: @Composable () -> Unit) {
     Column(modifier = modifier) {
-        H3(text = header, modifier = Modifier.padding(bottom = 20.dp).align(Alignment.CenterHorizontally))
+        H3(
+            text = header,
+            modifier = Modifier.padding(bottom = ResourceDp.mediumPadding).align(Alignment.CenterHorizontally)
+        )
         content()
     }
 }
