@@ -52,7 +52,6 @@ kotlin {
                 implementation("dev.chrisbanes.material3:material3-window-size-class-multiplatform:0.5.0")
                 implementation("io.coil-kt.coil3:coil-compose:3.0.0-alpha06")
                 implementation("io.coil-kt.coil3:coil-network-ktor:3.0.0-alpha06")
-                implementation("tech.annexflow.compose:constraintlayout-compose-multiplatform:0.4.0")
 //                implementation("io.github.wojciechosak:calendar:1.0.1")
             }
         }

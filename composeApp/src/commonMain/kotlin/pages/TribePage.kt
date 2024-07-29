@@ -16,8 +16,7 @@ import androidx.compose.ui.Modifier
 import elements.ImageSpinner
 import elements.LocationMap
 import model.Address
-import model.ContactPerson
-import model.LocalImageResource
+import model.stammesFuehrung
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import shared.*
@@ -127,10 +126,7 @@ fun TribePage() {
                         H2(text = "Stammesführung", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
                         Text(text = "TODO")
                         HeadShotGrid(
-                            contactPersons = listOf(
-                                ContactPerson(name = "Michi", image = Res.drawable.image_Michael_Headshot),
-                                ContactPerson(name = "Phuket (Fahrtenname)", image = Res.drawable.image_Phuket_Headshot)
-                            ),
+                            contactPersons = stammesFuehrung(),
                             sizeClass = sizeClass
                         )
                         HorizontalDivider()
@@ -165,9 +161,7 @@ private fun TribePageHeader() {
             modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
         )
         ImageSpinner(
-            images = imageList().apply {
-                this.add(0, LocalImageResource(Res.drawable.icon_logo))
-            },
+            images = imageListWithLogo(imageList(remote = false)),
             modifier = Modifier.height(height = ResourceDp.largeGridCellSize).fillMaxWidth()
                 .padding(vertical = ResourceDp.smallPadding)
         )

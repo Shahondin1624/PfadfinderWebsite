@@ -1,4 +1,3 @@
 package model
 
-interface ResourceAccessor {
-}
+interface ResourceAccessor

@@ -15,14 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import model.ContactPerson
-import model.LocalImageResource
 
 @Composable
 fun Headshot(person: ContactPerson, maximumWidth: Dp, modifier: Modifier) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier) {
         CustomImage(
-            resourceAccessor = LocalImageResource(person.image), contentDescription = person.name,
+            resourceAccessor = person.image, contentDescription = person.name,
             modifier = Modifier
                 .sizeIn(maxWidth = maximumWidth)
                 .aspectRatio(1f)

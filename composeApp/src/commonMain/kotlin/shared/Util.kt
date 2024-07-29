@@ -9,6 +9,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import model.LocalImageResource
+import model.RemoteImageResource
 import model.ResourceAccessor
 import website.composeapp.generated.resources.*
 
@@ -58,17 +59,47 @@ fun createLink(
     }
 }
 
-fun getGithubContentPath(pathToImage: String): String {
-    return "https://raw.githubusercontent.com/Shahondin1624/PfadfinderWebsite/master/$pathToImage"
+private const val drawableRemotePath = "composeApp/src/commonMain/composeResources/drawable/"
+
+fun getGithubImagePath(imageName: String): String {
+    return "https://raw.githubusercontent.com/Shahondin1624/PfadfinderWebsite/master/${drawableRemotePath}image_$imageName.jpeg"
 }
 
-fun imageList(): MutableList<ResourceAccessor> = mutableListOf(
-    LocalImageResource(Res.drawable.image_Meute_1),
+private fun localImageList(): MutableList<ResourceAccessor> = mutableListOf(
     LocalImageResource(Res.drawable.image_Fuehrung_1),
     LocalImageResource(Res.drawable.image_Fuehrung_2),
     LocalImageResource(Res.drawable.image_Fuehrung_3),
     LocalImageResource(Res.drawable.image_Meute_1),
+    LocalImageResource(Res.drawable.image_Trupp_Sebastian_von_Rotenhan),
+    LocalImageResource(Res.drawable.image_Trupp_Sebastian_von_Rotenhan_2),
     LocalImageResource(Res.drawable.image_Rover_1),
     LocalImageResource(Res.drawable.image_Stamm_1),
     LocalImageResource(Res.drawable.image_Stamm_2),
 )
+
+private fun remoteImageList(): MutableList<ResourceAccessor> {
+    return mutableListOf(
+        "Fuehrung_1",
+        "Fuehrung_2",
+        "Fuehrung_3",
+        "Meute_1",
+        "Trupp_Sebastian_von_Rotenhan",
+        "Trupp_Sebastian_von_Rotenhan_2",
+        "Rover_1",
+        "Stamm_1",
+        "Stamm_2",
+    ).map { RemoteImageResource(getGithubImagePath(it)) }
+        .toMutableList()
+}
+
+fun imageList(remote: Boolean = false): MutableList<ResourceAccessor> =
+    if (remote) remoteImageList() else localImageList()
+
+fun imageListWithLogo(list: MutableList<ResourceAccessor>): MutableList<ResourceAccessor> {
+    if (list.first() is RemoteImageResource) {
+        list.add(0, RemoteImageResource("${drawableRemotePath}icon_logo.png"))
+    } else {
+        list.add(0, LocalImageResource(Res.drawable.icon_logo))
+    }
+    return list
+}

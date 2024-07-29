@@ -12,7 +12,7 @@ import shared.imageList
 @Composable
 fun ImagesPage() {
     ImageList(
-        images = imageList(),
+        images = imageList(remote = false),
         modifier = Modifier.fillMaxSize().padding(vertical = ResourceDp.smallPadding)
             .padding(horizontal = ResourceDp.horizontalCardPadding())
     )

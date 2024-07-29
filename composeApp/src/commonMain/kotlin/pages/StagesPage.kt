@@ -13,13 +13,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import elements.Stage
-import model.ContactPerson
-import model.LocalImageResource
+import model.*
 import org.jetbrains.compose.resources.stringResource
-import shared.CustomHorizontalDivider
-import shared.DescribedImage
-import shared.H1
-import shared.Position
+import shared.*
 import website.composeapp.generated.resources.*
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
@@ -46,11 +42,7 @@ fun StagesPage() {
                     ageRange = 7..12,
                     meetingTime = "Freitags 17:30 bis 19:30 Uhr",
                     description = stringResource(Res.string.cubScoutsDescription),
-                    contactPersons = listOf(
-                        ContactPerson(name = "Lena", image = Res.drawable.image_Lena_Headshot),
-                        ContactPerson(name = "Helena", image = Res.drawable.image_Helena_Headshot),
-                        ContactPerson(name = "Rachel", image = Res.drawable.image_Rachel_Headshot),
-                    ),
+                    contactPersons = woelflingsFuehrung(),
                     sizeClass = widthSizeClass
                 ) {
                     DescribedImage(
@@ -71,11 +63,7 @@ fun StagesPage() {
                     ageRange = 12..17,
                     meetingTime = "Freitags 17:30 bis 19:30 Uhr",
                     description = stringResource(Res.string.scoutsDescription),
-                    contactPersons = listOf(
-                        ContactPerson(name = "Tobias", image = Res.drawable.image_Tobias_Headshot),
-                        ContactPerson(name = "Michi", image = Res.drawable.image_Michael_Headshot),
-                        ContactPerson(name = "Phuket (Fahrtenname)", image = Res.drawable.image_Phuket_Headshot),
-                    ),
+                    contactPersons = pfadiFuehrung(),
                     sizeClass = widthSizeClass
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -94,7 +82,7 @@ fun StagesPage() {
                         DescribedImage(
                             text = "Trupp Sebastian von Rotenhan",
                             position = Position.BOTTOM,
-                            resourceAccessor = LocalImageResource(Res.drawable.image_Trupp_Sebastian_von_Rotenhan),
+                            resourceAccessor = LocalImageResource(Res.drawable.image_Trupp_Sebastian_von_Rotenhan_2),
                             modifier = Modifier.padding(
                                 horizontal = ResourceDp.horizontalCardPadding(),
                                 vertical = ResourceDp.smallPadding
@@ -108,9 +96,7 @@ fun StagesPage() {
                     stage = "Rover",
                     emailAddress = stringResource(Res.string.emailRover),
                     description = stringResource(Res.string.roverDescription),
-                    contactPersons = listOf(
-                        ContactPerson(name = "Andi", image = Res.drawable.image_Andi_Headshot),
-                    ),
+                    contactPersons = roverFuehrung(),
                     sizeClass = widthSizeClass
                 ) {
                     DescribedImage(
