@@ -1,10 +1,10 @@
 package pages
 
+import ResourceDp
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridItemSpan
-import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import elements.Stage
-import model.ContactPerson
+import model.*
 import org.jetbrains.compose.resources.stringResource
 import shared.*
 import website.composeapp.generated.resources.*
@@ -28,15 +28,12 @@ fun StagesPage() {
     }
     LazyVerticalStaggeredGrid(modifier = Modifier.fillMaxSize(),
         columns = StaggeredGridCells.Adaptive(adaptiveWidth),
-        verticalItemSpacing = 50.dp,
+        verticalItemSpacing = ResourceDp.largePadding,
         horizontalArrangement = Arrangement.SpaceEvenly,
-        contentPadding = PaddingValues(10.dp),
+        contentPadding = PaddingValues(ResourceDp.smallPadding),
         content = {
             item(span = StaggeredGridItemSpan.FullLine) {
                 StagesPageHeader()
-            }
-            item {
-                TribeLeaders(sizeClass = widthSizeClass)
             }
             item {
                 Stage(
@@ -45,18 +42,17 @@ fun StagesPage() {
                     ageRange = 7..12,
                     meetingTime = "Freitags 17:30 bis 19:30 Uhr",
                     description = stringResource(Res.string.cubScoutsDescription),
-                    contactPersons = listOf(
-                        ContactPerson(name = "Lena", image = Res.drawable.image_Lena_Headshot),
-                        ContactPerson(name = "Helena", image = Res.drawable.image_Helena_Headshot),
-                        ContactPerson(name = "Rachel", image = Res.drawable.image_Rachel_Headshot),
-                    ),
+                    contactPersons = woelflingsFuehrung(),
                     sizeClass = widthSizeClass
                 ) {
                     DescribedImage(
                         text = "Meute Hathi",
                         position = Position.BOTTOM,
-                        image = Res.drawable.image_Meute_1,
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                        resourceAccessor = LocalImageResource(Res.drawable.image_Meute_1),
+                        modifier = Modifier.padding(
+                            horizontal = ResourceDp.horizontalCardPadding(),
+                            vertical = ResourceDp.smallPadding
+                        )
                     )
                 }
             }
@@ -67,31 +63,30 @@ fun StagesPage() {
                     ageRange = 12..17,
                     meetingTime = "Freitags 17:30 bis 19:30 Uhr",
                     description = stringResource(Res.string.scoutsDescription),
-                    contactPersons = listOf(
-                        ContactPerson(name = "Tobias", image = Res.drawable.image_Tobias_Headshot),
-                        ContactPerson(name = "Michi", image = Res.drawable.image_Michael_Headshot),
-                        ContactPerson(name = "Phuket (Fahrtenname)", image = Res.drawable.image_Phuket_Headshot),
-                    ),
+                    contactPersons = pfadiFuehrung(),
                     sizeClass = widthSizeClass
                 ) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         DescribedImage(
                             text = "Sippe Dachs",
                             position = Position.BOTTOM,
-                            image = Res.drawable.image_Sippe_Dachs,
-                            modifier = Modifier.padding(horizontal = 10.dp)
+                            resourceAccessor = LocalImageResource(Res.drawable.image_Sippe_Dachs),
+                            modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
                         )
                         DescribedImage(
                             text = "Sippe Fledermaus",
                             position = Position.BOTTOM,
-                            image = Res.drawable.image_Sippe_Fledermaus,
-                            modifier = Modifier.padding(horizontal = 10.dp)
+                            resourceAccessor = LocalImageResource(Res.drawable.image_Sippe_Fledermaus),
+                            modifier = Modifier.padding(horizontal = ResourceDp.horizontalCardPadding())
                         )
                         DescribedImage(
                             text = "Trupp Sebastian von Rotenhan",
                             position = Position.BOTTOM,
-                            image = Res.drawable.image_Trupp_Sebastian_von_Rotenhan,
-                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                            resourceAccessor = LocalImageResource(Res.drawable.image_Trupp_Sebastian_von_Rotenhan_2),
+                            modifier = Modifier.padding(
+                                horizontal = ResourceDp.horizontalCardPadding(),
+                                vertical = ResourceDp.smallPadding
+                            )
                         )
                     }
                 }
@@ -101,16 +96,17 @@ fun StagesPage() {
                     stage = "Rover",
                     emailAddress = stringResource(Res.string.emailRover),
                     description = stringResource(Res.string.roverDescription),
-                    contactPersons = listOf(
-                        ContactPerson(name = "Andi", image = Res.drawable.image_Andi_Headshot),
-                    ),
+                    contactPersons = roverFuehrung(),
                     sizeClass = widthSizeClass
                 ) {
                     DescribedImage(
                         text = "Roverrunde St. Mauritius",
                         position = Position.BOTTOM,
-                        image = Res.drawable.image_Rover_1,
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                        resourceAccessor = LocalImageResource(Res.drawable.image_Rover_1),
+                        modifier = Modifier.padding(
+                            horizontal = ResourceDp.horizontalCardPadding(),
+                            vertical = ResourceDp.smallPadding
+                        )
                     )
                 }
             }
@@ -121,29 +117,9 @@ fun StagesPage() {
 private fun StagesPageHeader() {
     Column(
         modifier = Modifier.fillMaxSize()
-            .padding(all = 10.dp), horizontalAlignment = Alignment.CenterHorizontally
+            .padding(all = ResourceDp.smallPadding), horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        H1(text = "Unsere Stufen", modifier = Modifier.padding(vertical = 10.dp))
+        H1(text = "Unsere Stufen", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
         CustomHorizontalDivider()
-    }
-}
-
-@Composable
-private fun TribeLeaders(sizeClass: WindowWidthSizeClass) {
-    CustomCard {
-        Column(
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 50.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            H2(text = "Stammesführung", modifier = Modifier.padding(vertical = 10.dp))
-            Text(text = "TODO")
-            HeadShotGrid(
-                contactPersons = listOf(
-                    ContactPerson(name = "Michi", image = Res.drawable.image_Michael_Headshot),
-                    ContactPerson(name = "Phuket (Fahrtenname)", image = Res.drawable.image_Phuket_Headshot)
-                ),
-                sizeClass = sizeClass
-            )
-        }
     }
 }

@@ -1,6 +1,5 @@
 package elements
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material3.Icon
@@ -8,14 +7,15 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.DrawableResource
+import model.ResourceAccessor
 import org.jetbrains.compose.resources.painterResource
+import shared.CustomImage
 import website.composeapp.generated.resources.Res
 import website.composeapp.generated.resources.icon_left_arrow
 import website.composeapp.generated.resources.icon_right_arrow
 
 @Composable
-fun ImageSpinner(modifier: Modifier = Modifier, images: List<DrawableResource>) {
+fun ImageSpinner(modifier: Modifier = Modifier, images: List<ResourceAccessor>) {
     Row(
         modifier = modifier,
         horizontalArrangement = Arrangement.Center,
@@ -34,7 +34,7 @@ fun ImageSpinner(modifier: Modifier = Modifier, images: List<DrawableResource>) 
         }) {
             Icon(painter = painterResource(Res.drawable.icon_left_arrow), contentDescription = "Left Image")
         }
-        Image(painter = painterResource(image), contentDescription = "ImageSpinner", modifier = Modifier.weight(0.7f))
+        CustomImage(resourceAccessor = image, contentDescription = "ImageSpinner", modifier = Modifier.weight(0.7f))
         IconButton(modifier = Modifier.align(Alignment.CenterVertically).weight(0.15f), onClick = {
             val next = index + 1
             index = if (next >= images.size) {

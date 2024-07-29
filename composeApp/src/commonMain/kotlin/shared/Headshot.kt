@@ -1,6 +1,5 @@
 package shared
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
@@ -16,14 +15,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import model.ContactPerson
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun Headshot(person: ContactPerson, maximumWidth: Dp, modifier: Modifier) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier) {
-        Image(
-            painter = painterResource(person.image), contentDescription = person.name,
+        CustomImage(
+            resourceAccessor = person.image, contentDescription = person.name,
             modifier = Modifier
                 .sizeIn(maxWidth = maximumWidth)
                 .aspectRatio(1f)

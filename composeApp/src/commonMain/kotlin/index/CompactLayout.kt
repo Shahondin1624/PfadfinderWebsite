@@ -1,5 +1,6 @@
 package index
 
+import ResourceDp
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -10,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import elements.BottomBar
 import navigation.Routes
@@ -25,7 +25,7 @@ fun CompactLayout(isInDarkMode: MutableState<Boolean>, navController: NavHostCon
         TopAppBar(title = { }, navigationIcon = {
             IconButton(
                 onClick = { navController.navigate(Routes.TRIBE.name) },
-                modifier = Modifier.padding(start = 20.dp)
+                modifier = Modifier.padding(start = ResourceDp.mediumPadding)
             ) {
                 Icon(painter = painterResource(Res.drawable.icon_logo), contentDescription = "Logo")
             }

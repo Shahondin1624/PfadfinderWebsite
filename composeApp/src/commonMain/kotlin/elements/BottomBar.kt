@@ -1,5 +1,6 @@
 package elements
 
+import ResourceDp
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -11,7 +12,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.PointerIcon
 import androidx.compose.ui.input.pointer.pointerHoverIcon
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import navigation.Routes
 import org.jetbrains.compose.resources.stringResource
@@ -29,18 +29,19 @@ fun BottomBar(navigator: NavController) {
     ) {
         Text(
             text = stringResource(Res.string.dataProtectionDeclaration),
-            modifier = Modifier.padding(horizontal = 10.dp).pointerHoverIcon(icon = PointerIcon.Hand).onClick {
-                navigator.navigate(Routes.COPYRIGHT.name)
-            }
+            modifier = Modifier.padding(horizontal = ResourceDp.smallPadding).pointerHoverIcon(icon = PointerIcon.Hand)
+                .onClick {
+                    navigator.navigate(Routes.COPYRIGHT.name)
+                }
         )
         Text(
             text = stringResource(Res.string.impressum),
-            modifier = Modifier.padding(horizontal = 10.dp).pointerHoverIcon(icon = PointerIcon.Hand)
+            modifier = Modifier.padding(horizontal = ResourceDp.smallPadding).pointerHoverIcon(icon = PointerIcon.Hand)
                 .onClick { navigator.navigate(Routes.COPYRIGHT.name) }
         )
         Text(
             text = stringResource(Res.string.legalDisclaimer),
-            modifier = Modifier.padding(horizontal = 10.dp).pointerHoverIcon(icon = PointerIcon.Hand)
+            modifier = Modifier.padding(horizontal = ResourceDp.smallPadding).pointerHoverIcon(icon = PointerIcon.Hand)
                 .onClick { navigator.navigate(Routes.COPYRIGHT.name) }
         )
     }

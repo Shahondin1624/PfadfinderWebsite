@@ -1,5 +1,6 @@
 package index
 
+import ResourceDp
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyListScope
@@ -12,7 +13,6 @@ import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -43,7 +43,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.TRIBE.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.stamm))
         }
@@ -51,7 +51,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.STAGES.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.stufen))
         }
@@ -59,7 +59,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.CALENDAR.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.kalender))
         }
@@ -67,7 +67,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.IMAGES.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.bilder))
         }
@@ -75,7 +75,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.DOWNLOADS.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.downloads))
         }
@@ -83,7 +83,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.PAYPAL.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.paypal))
         }
@@ -91,7 +91,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.FOERDERVEREIN.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.boosterClubHeader))
         }
@@ -99,7 +99,7 @@ fun LazyListScope.createNavigationButtons(navController: NavHostController) {
     item {
         Button(
             onClick = { navController.navigate(Routes.COPYRIGHT.name) },
-            modifier = Modifier.padding(horizontal = 10.dp)
+            modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
         ) {
             Text(text = stringResource(Res.string.impressum))
         }
@@ -114,7 +114,7 @@ fun ThemeButton(isInDarkMode: MutableState<Boolean>) {
             isInDarkMode.value = !isInDarkMode.value
             themeModeText = if (!isInDarkMode.value) "Dark Mode" else "White Mode"
         },
-        modifier = Modifier.padding(horizontal = 10.dp)
+        modifier = Modifier.padding(horizontal = ResourceDp.navigationButtonHorizontalPadding)
     ) {
         Text(text = themeModeText)
     }

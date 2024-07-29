@@ -1,5 +1,6 @@
 package index
 
+import ResourceDp
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
@@ -7,7 +8,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import elements.BottomBar
 import navigation.Routes
@@ -23,12 +23,15 @@ fun LandscapeLayout(isInDarkMode: MutableState<Boolean>, navController: NavHostC
             TopAppBar(title = { }, navigationIcon = {
                 IconButton(
                     onClick = { navController.navigate(Routes.TRIBE.name) },
-                    modifier = Modifier.padding(start = 20.dp)
+                    modifier = Modifier.padding(start = ResourceDp.mediumPadding)
                 ) {
                     Icon(painter = painterResource(Res.drawable.icon_logo), contentDescription = "Logo")
                 }
             }, actions = {
-                LazyRow(horizontalArrangement = Arrangement.Center, modifier = Modifier.padding(start = 25.dp)) {
+                LazyRow(
+                    horizontalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(start = ResourceDp.mediumPadding)
+                ) {
                     createNavigationButtons(navController)
                     item {
                         ThemeButton(isInDarkMode)

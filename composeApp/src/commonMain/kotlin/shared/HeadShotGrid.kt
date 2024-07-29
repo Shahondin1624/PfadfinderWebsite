@@ -1,5 +1,6 @@
 package shared
 
+import ResourceDp
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -32,7 +33,7 @@ fun HeadShotGrid(contactPersons: List<ContactPerson>, sizeClass: WindowWidthSize
                         Headshot(
                             person = contact,
                             maximumWidth = 100.dp,
-                            modifier = Modifier.padding(all = 25.dp)
+                            modifier = Modifier.padding(all = ResourceDp.mediumPadding)
                         )
                     }
                 }
