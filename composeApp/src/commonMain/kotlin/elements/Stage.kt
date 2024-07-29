@@ -26,33 +26,35 @@ fun Stage(
     sizeClass: WindowWidthSizeClass,
     additional: @Composable () -> Unit
 ) {
-    CustomCard {
-        Column(
-            modifier = Modifier.padding(horizontal = 50.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            H2(text = "${stage}stufe", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
-            ageRange?.let {
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        CustomCard {
+            Column(
+                modifier = Modifier.padding(horizontal = 50.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                H2(text = "${stage}stufe", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
+                ageRange?.let {
+                    Text(
+                        text = "${ageRange.first} bis ${ageRange.last} Jahre",
+                        style = MaterialTheme.typography.labelLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                meetingTime?.let {
+                    Text(text = "Gruppenstunde", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
+                    Text(text = meetingTime, modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
+                }
                 Text(
-                    text = "${ageRange.first} bis ${ageRange.last} Jahre",
-                    style = MaterialTheme.typography.labelLarge,
-                    fontWeight = FontWeight.Bold
+                    text = description,
+                    modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
+                        .padding(horizontal = ResourceDp.horizontalCardPadding())
                 )
+                Spacer(modifier = Modifier.padding(top = ResourceDp.largePadding))
+                HeadShotGrid(contactPersons, sizeClass)
+                CustomHorizontalDivider()
+                EmailButton(targetText = "${stage}führung", emailAddress = emailAddress)
+                additional()
             }
-            meetingTime?.let {
-                Text(text = "Gruppenstunde", modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
-                Text(text = meetingTime, modifier = Modifier.padding(vertical = ResourceDp.smallPadding))
-            }
-            Text(
-                text = description,
-                modifier = Modifier.padding(vertical = ResourceDp.smallPadding)
-                    .padding(horizontal = ResourceDp.horizontalCardPadding())
-            )
-            Spacer(modifier = Modifier.padding(top = ResourceDp.largePadding))
-            HeadShotGrid(contactPersons, sizeClass)
-            CustomHorizontalDivider()
-            EmailButton(targetText = "${stage}führung", emailAddress = emailAddress)
-            additional()
         }
     }
 }
