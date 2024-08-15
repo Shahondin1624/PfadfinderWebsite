@@ -13,6 +13,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import elements.ImageSpinner
 import elements.LocationMap
 import model.Address
@@ -36,7 +37,7 @@ fun TribePage() {
     )
     LazyVerticalStaggeredGrid(
         modifier = Modifier.fillMaxSize(),
-        columns = StaggeredGridCells.Adaptive(ResourceDp.largeGridCellSize),
+        columns = StaggeredGridCells.FixedSize(ResourceDp.fieldSize()),
         verticalItemSpacing = ResourceDp.largePadding,
         horizontalArrangement = Arrangement.SpaceAround,
         contentPadding = PaddingValues(ResourceDp.smallPadding),
